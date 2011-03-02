@@ -1,0 +1,225 @@
+
+TODO:
+  - automatic coercion for hash[ x , ... ] where x is a 'name'
+ 
+  - invert not working correctly
+
+  - ha2 <- ha[] : should produce copy and not a reference?
+
+  - Is there a happly function that is like lapply that either passes keys and 
+    values to the functions happly( h, function(k,v,...) ), will it return a hash
+    object?
+
+  - Increase perfomance of `[` and `hash` methods
+
+  - Be able to create a loop that assigns both key and value, e.g.:
+     for( k,v in ha ) ...
+
+  - (LOW PRIORITY) default MISSING behavior should be customizable at the hash
+    instance level.
+      Requires a slot: @na.action  that can be a function or value. This default
+      should exist between the global default and the call level.
+    This is low priority since missing customization only applies to hash slices
+    now.
+
+  - Default of missing key should be NULL. 
+    - option to fail on missing key?
+    - customizable missing 
+
+  - Should the default value of non-existant keys be NA or NULL.
+    - The default of the environemnet is NULL
+    - NA is the norm when data is missing, i.e. from  a frame.
+      l:: THUSFAR, we are using NA when there are missing keys.
+    - N.B. When access these objects the missing values are returned:
+      - vectors : NA
+      - list    : NULL
+      - data.frames : NULL
+    - since getOption( 'na.action.hash' ) returns NULL if undefined, we can 
+      use this as  getOption( 'na.action.hash' )  as the na.action only . . .
+      but this sets the value of the Hash to NULL.  Setting the value to NULL
+      is equal to deleting the key.  h$key <- NULL deletes the key.  So we should
+      have no.  
+    - NA is retu
+
+
+
+
+  - Handle any type for a key, especially integers.
+    - Keep track of the type of the key: hash@key.class                          
+    - Show method should sort on key or use: hash@indexed 
+    x make.key already uses as.character   
+      - Would require that there be a way to turn that value into a scalar perhaps 
+        even through the make.key or make.name functions.
+    ? Do we allow mixing of types ? :: NO
+      
+    - See also IxHash TODO below.
+
+  - x <- h ; produce x as a reference to h and not a copied object.
+
+
+  - IxHash : Indexed Hash.  Allow access by integer position?
+      There becomes a problem of keeping track of replacements.
+
+  - Implement Judy Hash?
+
+  - Is there a abstract version of the hash where keys can contain muliple values?
+     how would this be implemented as an md5hash of the args?
+     h[[ vector ]] <- values ?  
+     h[[ paste( as.character( vector ) ) ]] <- value
+     How can we make each of the keys searchable?  i.e. get all where the second
+     key field = 7.  Each of the key fields would have to be hashed?  
+                           
+  - Coersion functions 
+    - as.vector, 
+    - pairlist, 
+    - as.data.frame, 
+    x as.environment, 
+    x as.list
+
+  - other coercions : 
+       as.environment,  not possible without clobbering base h@env anyhow 
+       as.data.frame,   yes
+       as.vector ,      yes
+      
+  - Implement clear as initializing of hash rather than rm
+   
+  - R/clear.R bug? :: SHOULD THIS COPY THE HASH?
+     h <- hash( letters, 1:26 )
+     hh <- h
+     clear(hh)
+     h   # EMPTY. 
+
+     Does not work the same with 'rm'. Will this require overloading the 
+     assignment operators?
+
+  - test functions    
+       x is.hash : object is a hash
+       is.vector : test values to see if they are expressible as a vector
+       is.list   : "
+
+  - assign <==> set : it is to bad that assign is used instead of get 
+    get/set seems better aligned than get/assign.
+
+============================ COMPLETED ================================
+
+  x copy method: copy( hash )
+
+  x is.empty method? 
+     h <- hash()
+     is.empty(h)  # TRUE
+
+
+  x Move functions to their own file . . . hash.actions
+
+  x implement max.print.
+
+  x DEPRECATE $ 
+  
+  x DEPRECATE: .get  use get and mget instead to create [ and [[ and use these instead
+
+  X implement length as env.profile(ha)$nchains? No. Not the same result.
+
+
+  x mget.hash 
+    - is it faster than sapply(x, function(x,hash) hash[[x]], hash )?
+
+  x test for missing keys for accessor ($, [[, [)
+    x emits NA
+    x $, [[
+    x [ : what is the behaviour of trying to access a missing key among many missing
+          keys.
+
+  x GET 
+    x consider eliminating .get :: NO
+    x mget : return ... override base::mget :: decided values works better
+    x values :
+      x There is an ambiguity of whether to simplify or not 
+
+
+ x move @env to @.Data
+ NO- move @.Data to plain object: this should be explicit.
+
+ x inverted.hash constructor function to directly create an inverted hash
+
+ x Constructor method should handle hash and environment objects.
+   what does hash( hash() ) give?  A ref to the hash.
+
+ x Get rm working correctly so that a call to clear is not needed before 
+   the call: I do not think this is necessary any longer.
+   
+   to rm.  See the bookmarked link of how this is managed. Detach?
+
+ x 'delete' as an alias for del to match Perl dictionary lingo.
+
+ x Modify arguments to 'hash' to be named ( x, key, value ) ? 
+      ( x , value )?  (...) and pass the lot to set()?  And let set sort it out?
+
+ - Generics: 
+   x  set    : can this be replaced by [ or [[
+   x  get    : "
+       we can probably get rid of get, set but will need to create them as 
+       hidden functions in the hash package: hash::get and hash::set
+   x    Should 
+   x      h[[key]] <- NULL 
+   x      h[, key] <- NULL
+   x      h$key    <- NULL   
+   x    erase the items as it does for data.frames?  Yes. 
+
+   x  items  : as.list
+        this is a base function.  The methods should closely mirror the base 
+        function.
+
+   x  length : needed (keep)
+        
+
+   x  keys   : same as names?
+   x  values : [] [[]] 
+   x  del    : same as rm -- see items 1 and 2 above
+   x  clear  : same as new
+   x  show   : 
+     has-key: same as exists
+
+     summary: create 
+
+   x  methods: [[ [ $ keys values( no different from accessors )
+   x           del clear show has.key show
+
+   x remove : items, set, get 
+   x   - if we remove set and get as methods ... then we should have them 
+   x     as functions in the class.  
+
+
+ x how many accessors do we need?  get, values, $, [, [[ .
+   get and values are essensially the same.  
+     What about values(h) <- x?
+     or keys(h) <- x
+   should these be viable replacement functions as well?
+   x How do we use set to accomodate setting from data.frame? list? environment? 
+     and hashes?  append( hash, list or data.frame or env or hash ) to add
+     Then we have to be more explicit ... h[[keys]] <- values etc.
+  
+ x what about 
+   x names(h) ? 
+   x ls(h) ?  Cannot be done.
+
+   there is  a potential problems as both names and ls might imply that there is 
+   an order to the hash which there might not be.
+
+ x Rename slot x to .env.  
+   Although a class cannot inherit from 'environment' 
+     If we name the environment slot .Data, we cannot set it with the constructor
+     'new'.  Calling new( "hash", .Data = new.env( ... ) result in the following
+     warning ...
+     Error in initialize(value, ...) : 
+        initialize method returned an object of class "environment" instead of 
+        the required class "foo"
+     The object is then class environment.  
+     Other option call the slot 'env' or 'Data' or 'hash' 
+     '.Data' cannot be set.  
+     So we have: 
+        h@hash, x@hash, hash@hash
+        h@env,  x@env,  hash@env
+        h@data, x@data, hash@data
+    Personally I like env.  hash is too generic and confusing.  data is too generic
+
+  

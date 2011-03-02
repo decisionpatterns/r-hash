@@ -1,0 +1,12 @@
+Package: hash
+Type: Package
+Title: Full feature implementation of hash/associated arrays/dictionaries
+Version: 2.0.1 
+Date: 2010-05-26
+Author: Christopher Brown
+Maintainer: Christopher Brown <cbrown@opendatagroup.com>
+Depends: R (>= 2.10.0), methods, utils
+Description: This package implements a data structure similar to hashes in Perl and dictionaries in Python but with a purposefully R flavor. For objects of appreciable size, access using hashes outperforms native named lists and vectors.   
+License: LGPL(>=2)
+URL: http://www.opendatagroup.com, http://opendatagroup.com/2010/04/26/hash-2-0-0/, http://opendatagroup.com/2009/07/26/hash-package-for-r/, http://opendatagroup.com/2009/10/21/r-accessors-explained
+LazyLoad: yes

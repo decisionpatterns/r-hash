@@ -1,0 +1,68 @@
+\name{hash.action}
+\Rdversion{1.1}
+\alias{hash.default}
+\alias{hash.fail}
+\alias{hash.warn}
+
+\title{Actions for when hash keys are not found.}
+
+\description{
+  These functions control the behavior of the hash package when trying
+  to access non-existant hash keys. The default behavior is to return 
+  \code{NA}.  This is controllable through the \code{hash.action}
+  option. See Details for further explanation.
+}
+
+\usage{
+  hash.default( key )
+  hash.warn( key, call. = FALSE, immediate. = TRUE )
+  hash.fail( key, call. = FALSE ) 
+}
+
+\arguments{
+
+  \item{key}{ The name of the non-existant key }
+  \item{call.}{ Passed to \code{\link{stop}} or \code{\link{warning}} }
+  \item{immediate.}{ 
+    hash.warn only.  Whether to immediately issue the warning.  See
+    \code{\link{warning}} for details 
+  }
+}
+
+\details{
+
+   \code{hash.default} always returns \code{NA}. This is the default
+   behavior for hashes. Looking up values for non-existant keys returns
+   \code{NA}.
+
+   \code{hash.warn} issues an immediate warning, but returns 
+   \code{hash.default} value, by default \code{NA}.
+
+   \code{hash.fail} stops iexecution with an error.  
+
+   The default behavior can be customized by setting the \code{hash.action}
+   option. A value or callback function may be provided.
+   
+        \code{ options( hash.action=0 ) }
+        \code{ options( hash.action=hash.warn ) }
+
+}
+
+\value{
+    \code{hash.default} returns \code{NA}.
+    \code{hash.warn} returns \code{hash.default()} with a warning.
+    \code{hash.fail} fails immediately
+}
+
+\author{
+  Christopher Brown
+}
+
+
+
+\examples{
+    hash.default()
+}
+
+\keyword{ methods }
+\keyword{ manip } 

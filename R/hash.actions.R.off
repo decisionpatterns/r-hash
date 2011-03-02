@@ -1,0 +1,26 @@
+
+# ---------------------------------------------------------------------
+# hash.na.action. functions
+#   set options( hash.na.action=X ) 
+#
+#   X can be a function that expects minimally the name of a key or 
+#     a constant.
+#
+#   These can be used in .get or the various accessor functions. Can
+#   be globally set options( 'hash.na.action' ) 
+#
+# ---------------------------------------------------------------------
+# FAIL on missing key
+hash.fail <- function(key, call.=FALSE ) {
+  stop( "key, ", key, ", not found in hash.", call.=call. ) 
+}
+      
+# WARN on missing key
+hash.warn <- function(key, call.=FALSE, immediate.=TRUE ) {
+  warning( "key, ", key, ", not found in hash.", call.=call., immediate.=immediate. )
+  return( hash.default() )
+}
+
+# DEFAULT: NA on missing key
+hash.default <- function(key) return(NULL)
+                                            
