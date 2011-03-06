@@ -27,7 +27,7 @@
 \author{
 Christopher Brown
 
-Maintainer: Christopher Brown <cbrown -at- opendatagroup -dot- com>
+Maintainer: Christopher Brown <cbrown -at- decisionpatterns -dot- com>
 }
 
 \references{
