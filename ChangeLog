@@ -1,7 +1,9 @@
 2011-03-17 Version 2.1.0
+  Changed contact information.
 
 2010-09-26 Version 2.0.2 (cbrown) 
   Just releasing as version 2.0.2.  Mostly, documentation and benchmarks added.
+  Unreleased to CRAN.
 
 2010-07-25 
   - demo/hash-benchmarks.R has been expanded.
