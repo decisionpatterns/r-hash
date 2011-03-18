@@ -42,8 +42,6 @@ TODO:
     - NA is retu
 
 
-
-
   - Handle any type for a key, especially integers.
     - Keep track of the type of the key: hash@key.class                          
     - Show method should sort on key or use: hash@indexed 
