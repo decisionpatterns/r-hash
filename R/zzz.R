@@ -5,7 +5,7 @@
   packageStartupMessage( 
     pkgname ,
     "-" ,
-    utils::installed.packages()[ pkgname , "Version"],
+    utils::packageVersion(pkgname, libname),
     " provided by Decision Patterns\n" ,
     domain = NA
   )
