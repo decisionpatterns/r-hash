@@ -31,5 +31,12 @@
 
 \seealso{ \code{\link{environment}} }
 
+\examples{
+
+  h <- hash( a=1, b=2 )
+  h.new <- copy( h )
+
+}
+
 
 \keyword{methods}
