@@ -15,7 +15,7 @@
 \usage{
   keys(x)
 
-  names.hash(x)
+  \method{names}{hash}(x)
 }
 
 \arguments{

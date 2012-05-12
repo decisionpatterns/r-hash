@@ -52,7 +52,7 @@
 
 \author{ Christopher Brown }
 
-\seealso{ \code{\link{hash}}, \code{\link{values}}, \code{\link{.set}}, \code{\link{as.list.hash}} }
+\seealso{ \code{\link{hash}}, \code{\link{values}}, \code{\link{.set}}, \code{\link{as.list}} }
 
 \examples{
 

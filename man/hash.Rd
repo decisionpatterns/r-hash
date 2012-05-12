@@ -17,7 +17,7 @@
 
   is.hash(x)
 
-  as.list.hash(x, all.names = FALSE, ... )
+  \method{as.list}{hash}(x, all.names = FALSE, \dots  )
 
 }
 
