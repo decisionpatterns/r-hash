@@ -16,11 +16,11 @@
   \tabular{ll}{
     Package: \tab hash\cr
     Type: \tab Package\cr
-    Version: \tab 2.1.0\cr
-    Date: \tab 2011-03-17\cr
+    Version: \tab 2.2.3\cr
+    Date: \tab 2012-05-15\cr
     License: \tab GPL (>= 2)\cr
     LazyLoad: \tab yes\cr
-    Depends: \tab R (>= 2.10.0), utils, methods\cr
+    Depends: \tab R (>= 2.12.0), utils, methods\cr
   }
 }
 
@@ -31,14 +31,6 @@ Maintainer: Christopher Brown <chris.brown -at- decisionpatterns -dot- com>
 }
 
 \references{
-
-    http://opendatagroup.com/2010/04/26/hash-2-0-0/
-
-    http://opendatagroup.com/2009/07/26/hash-package-for-r/
-
-    http://opendatagroup.com/2010/02/17/hash-1-99-x/
- 
-    http://opendatagroup.com/2009/10/21/r-accessors-explained/
 
     http://www.mail-archive.com/r-help@r-project.org/msg37637.html
 
@@ -76,7 +68,7 @@ Maintainer: Christopher Brown <chris.brown -at- decisionpatterns -dot- com>
   PERFORMANCE.  Hashes are based on R's native environments and are 
   designed to be exceedingly fast using the environments internal 
   hash table.  For small data structures, a list will out-perform a hash
-  in nearly every case.  For larger data structure, i.e. >100-1000 key
+  in nearly every case.  For larger data structure, i.e. > 500 key
   value pair the performance of the hash becomes faster.  Much beyond that
   the performance of the hash far outperforms native lists.  
 

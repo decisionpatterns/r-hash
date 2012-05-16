@@ -1,8 +1,8 @@
 Package: hash
 Type: Package
 Title: Full feature implementation of hash/associated arrays/dictionaries
-Version: 2.2.2 
-Date: 2012-04-25
+Version: 2.2.3 
+Date: 2012-05-15
 Author: Christopher Brown
 Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
 Depends: R (>= 2.12.0), methods, utils
