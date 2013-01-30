@@ -24,6 +24,6 @@ setMethod(
     "has.key" ,
     signature( "ANY", "hash" ) ,
     function( key, hash, ... ) {
-      sapply( key, exists, hash@.Data, ... )
+      sapply( key, exists, hash@.Data, inherits=FALSE )
     }
 )
