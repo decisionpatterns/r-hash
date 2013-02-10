@@ -2,7 +2,7 @@
 Fixes bug with has.key.  Because of the default settingg of inherits=TRUE in 
 the exists function, the has.key function was revealing keys for objects
 found on inherited environments, this included functions such as 'c' and 'q'. 
-
+Thanks to Michael Pratt for spotting the bug.
 
 2012-04-25 Version 2.2.0
   Recaptured orphaned package
