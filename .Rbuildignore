@@ -1,0 +1,7 @@
+^.git/.*
+.git/
+.git/.*
+
+^.*\.Rproj$
+^\.Rproj\.user$
+# *.Rproj
