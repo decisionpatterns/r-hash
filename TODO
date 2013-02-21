@@ -1,5 +1,7 @@
 
 TODO:
+  - copy functions
+
   - automatic coercion for hash[ x , ... ] where x is a 'name'
  
   - invert not working correctly

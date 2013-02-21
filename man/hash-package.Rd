@@ -16,8 +16,8 @@
   \tabular{ll}{
     Package: \tab hash\cr
     Type: \tab Package\cr
-    Version: \tab 2.2.5\cr
-    Date: \tab 2013-01-31\cr
+    Version: \tab 2.2.6\cr
+    Date: \tab 2013-02-20\cr
     License: \tab GPL (>= 2)\cr
     LazyLoad: \tab yes\cr
     Depends: \tab R (>= 2.12.0), utils, methods\cr

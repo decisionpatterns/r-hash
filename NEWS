@@ -1,4 +1,8 @@
-2013-01-31 Version 2.5.0 
+2013-02-20 Version 2.2.6
+  - Fixes bug with '[' assessor which was broken.  Thanks to Jeremy Rassen.
+  - Adds some test for accessors using testthat
+
+2013-01-31 Version 2.2.5 
 Fixes bug with has.key.  Because of the default settingg of inherits=TRUE in 
 the exists function, the has.key function was revealing keys for objects
 found on inherited environments, this included functions such as 'c' and 'q'. 

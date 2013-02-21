@@ -39,10 +39,10 @@ setClass(
           drop 
         ) {
   
-          env    <- new.env( hash = TRUE , parent=emptyenv() )    # Will be the new hash
-          for( k in i ) assign( k, get(k,x), env )
-              
-          return( new('hash', env) )
+          .h <- hash() # Will be the new hash
+          for( k in i ) assign( k, get(k,x), .h@.Data )
+            
+          return(.h)
 
         }
   )
