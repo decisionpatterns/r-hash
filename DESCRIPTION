@@ -1,15 +1,21 @@
 Package: hash
 Type: Package
 Title: Full feature implementation of hash/associated arrays/dictionaries
-Version: 2.2.6 
-Date: 2013-02-20
+Version: 3.0.0
+Date: 2014-02-01
 Author: Christopher Brown
 Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
-Depends: R (>= 2.12.0), methods, utils
-Suggests: testthat
-Description: This package implements a data structure similar to hashes
-    in Perl and dictionaries in Python but with a purposefully R flavor.
-    For objects of appreciable size, access using hashes outperforms 
-    native named lists and vectors.   
+URL: https://github.com/ctbrown/r-hash
+Depends:
+    R (>= 2.14.0),
+    methods,
+    utils
+Suggests:
+    testthat
+Description: This package implements a data structure similar to dictionaries
+    in Python and hashes in Perl and other languages but with a implementation
+    and API with an R flavor. For objects of appreciable size, hashes outperform
+    native named lists and vectors for lookups. A comprehensive set of functions
+    methods and object make hashes flexible and easy to use.
 License: GPL (>= 2)
 LazyLoad: yes

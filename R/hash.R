@@ -1,46 +1,69 @@
-# -----------------------------------------------------------------------------
-# CONSTRUCTOR: hash
-#   Takes an optional 1 or two parameter
-#   DEPENDS on method set
-# -----------------------------------------------------------------------------
-
-
 #' hash/associative array/dictionary data structure for the R language
 #' 
+#' Functions for creating and working with hash objects: 
 #' 
-#' Preferred constructor for the \code{\link{hash-class}}.
+#' \code{hash} Class constructor 
 #' 
+#' \code{is.hash} test if object is of class "hash"
 #' 
-#' \code{hash} returns a hash object.  Key-value pairs may be specified via the
-#' \code{...} argument as explicity arguments \code{keys} and \code{values}, as
-#' named key-value pairs, as a named vector or as implicit key, value vectors.
-#' See examples below for each type.
+#' \code{as.list}
+#' \code{as.list.hash} convert a hash object to a list
 #' 
-#' Keys must be a valid R name, must be a character vector and must not be the
-#' empty string, \code{""}. Values are restricted to any valid R objects.
+#' @param x a hash object.
 #' 
-#' See \code{\link{.set}} for further details and how key-value vectors of
-#' unequal length are interpretted.
-#' 
-#' Hashes may be accessed via the standard R accessors \code{[}, \code{[[} and
-#' \code{\$}.  See \code{\link{hash-accessors}} for details.
-#' 
-#' \code{is.hash} returns a boolean value indicating if the argument is a hash
-#' object.
-#' 
-#' \code{as.list.hash} coerces the hash to a list.
-#' 
-#' @aliases hash is.hash as.list.hash
-#' @param x A hash object.
 #' @param all.names a logical indicating whether to copy all values or
 #' (default) only those whose names do not begin with a dot
-#' @param ...  Additional arguments passed to the function
-#' @return For \code{hash}, an object of class hash.
-#' @author Christopher Brown
-#' @seealso \code{\link{.set}}, \code{\link{hash-accessors}}
-#' @keywords data manip
-#' @examples
 #' 
+#' @param ...  Additional arguments passed to the function
+#' #' HASH KEYS must be a valid character value and may not be the empty string
+#' \code{""}.
+#' 
+#' 
+#' @details
+#' 
+#' \emph{KEYS} must be a valid R name, must be a character vector and must not 
+#' be the empty string, \code{""}. When supplied by the used methods will try to coerce 
+#' the keys to valid names using \code{\link{make.keys}}
+#' 
+#' \emph{VALUES} are restricted to any valid R objects.
+#' HASH VALUES can be any R value, vector or object.
+#' 
+#' \emph{code{hash}} returns a hash object.  Key-value pairs may be specified via the
+#' \code{...} argument as explicity arguments \code{keys} and \code{values}, as
+#' named key-value pairs, as a named vector or as implicit key, value vectors.
+#' See examples below for each type. See \code{\link{.set}} for further details and how key-value vectors of
+#' unequal length are interpretted.
+#' 
+#' \emph{ACCESSORS.} Hashes may be accessed via the standard R accessors \code{[}, \code{[[} and
+#' \code{\$}.  See \code{\link[hash]{Extract}} for details.
+#' 
+#' \emph{PASS-BY REFERENCE.} Environments and hashes are special objects in R because
+#' only one copy exists globally. When provided as an argument to a function, no
+#' local copy is made. When passes to functions, those functions can change the
+#' value of the hash. This is not typical of R.
+#' 
+#' \emph{PERFORMANCE.}  Hashes are based on R's native environments and are designed
+#' to be exceedingly fast using the environments internal hash table.  For
+#' small data structures, a list will out-perform a hash in nearly every case.
+#' For larger data structure, i.e. > 500 key value pair the performance of the
+#' hash becomes faster.  Much beyond that the performance of the hash far
+#' outperforms native lists.
+#' 
+#' 
+#' @return 
+#'    \code{hash} hash object
+#'    
+#'    \code{is.hash} logical value indicating if the argument is a hash.
+#'    
+#'    \code{as.list} list conversion from hash
+#'    
+#'    \code{length} integer; number of key-value pairs in the hash
+#' 
+#' @author Christopher Brown
+#' 
+#' @seealso \code{\link{.set}}, \code{\link{Extract}}
+#' 
+#' @examples
 #' 
 #'   hash()
 #' 
@@ -71,7 +94,10 @@
 #'   clear(h)
 #'   rm(h)
 #' 
-#' 
+#' @rdname hash
+#' @aliases hash 
+#' @export hash
+
 hash <- function( ... ) {
 
   li <- list(...)  
@@ -91,4 +117,21 @@ hash <- function( ... ) {
 }
 	
 
+# ---------------------------------------------------------------------
+# MISC. FUNCTIONS
+# ---------------------------------------------------------------------
+
+#' @aliases is.hash
+#' @rdname  hash
+#' @export is.hash
+
+is.hash <- function(x) is( x, "hash" )
+
+
+#' @aliases as.list.hash
+#' @rdname hash
+#' @export as.list.hash
+
+as.list.hash <- function(x, all.names=FALSE, ...) 
+  as.list( x@.Data, all.names, ... )
 

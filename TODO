@@ -1,12 +1,12 @@
 
 TODO:
-  - copy functions
+  x copy functions
 
   - automatic coercion for hash[ x , ... ] where x is a 'name'
  
-  - invert not working correctly
+  x invert not working correctly
 
-  - ha2 <- ha[] : should produce copy and not a reference?
+  x ha2 <- ha[] : should produce copy and not a reference?
 
   - Is there a happly function that is like lapply that either passes keys and 
     values to the functions happly( h, function(k,v,...) ), will it return a hash
@@ -24,7 +24,7 @@ TODO:
     This is low priority since missing customization only applies to hash slices
     now.
 
-  - Default of missing key should be NULL. 
+  x Default of missing key should be NULL. 
     - option to fail on missing key?
     - customizable missing 
 

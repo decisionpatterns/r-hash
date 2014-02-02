@@ -1,183 +1,48 @@
-# ---------------------------------------------------------------------
-# CLASS: hash
-# 
-# n.b.: The name of this class from the Open Data R Style Guide which 
-# would have the CLASS named 'Hash'.  We use hash since the goal is to 
-# emulate a native class that is missing from the R Specification.
-# 
-# TODO:
-#
-# CONTAINS: hash class and hash accessors ($ [ [[)
-#
-# --------------------------------------------------------------------- 
-setClass( 
-  'hash', 
-  contains = 'environment' ,
-)
-
-
-# ----------------------- ACCESSOR METHODS ------------------------------
-
-  # --------------------------------------------------------------------- 
-  # METHOD: [ (hash slice)
-  #   The [ method provides for the subseting of the object and 
-  #   extracting a copy of the slice.
-  #
-  #   Notes:
-  #    - Uses 'mget' internally for speed.  Provides access to the hash.  
-  #    - We do not use the .set method for speed.   
-  # --------------------------------------------------------------------- 
-
-  setMethod( 
-       '[' , 
-        signature( x="hash", i="ANY", j="missing", drop = "missing") ,  
-        function( 
-          x,i,j, ... , 
-          # na.action = 
-          #  if( is.null( getOption('hash.na.action') ) ) NULL else 
-          #  getOption('hash.na.action') , 
-          drop 
-        ) {
-  
-          .h <- hash() # Will be the new hash
-          for( k in i ) assign( k, get(k,x), .h@.Data )
-            
-          return(.h)
-
-        }
-  )
-
-#  system.time( for( i in 1:10 ) for( ke in kes ) ha[ ke ]  )
-
-  # NB. A slice without any arguments, by definition returns the hash itself
-  setMethod( '[', signature( 'hash', 'missing', 'missing', 'missing' ),
-    function(x,i,j, ..., drop ) {
-      return( x )                  
-    }
-  )
-
-
-
-# --------------------------------------------------------------------- 
-# METHOD: [<-, Hash Slice Replacement Method
-# WHAT DO WE DO IF WE HAVE A DIFFERENT NUMBER OF KEYS AND VALUES?
-#   This should implement a hash slice.
-#   NB.  Although we would like to use assign directly, we use set 
-#        because it deals with the ambiguity of the lengths of the 
-#        key and value vectors.
-# --------------------------------------------------------------------- 
-
-setReplaceMethod( '[', c(x ="hash", i="ANY" ,j="missing", value="ANY") ,
-	function( x, i, ...,  value ) {
-	  .set( x, i, value, ...  )  
-	  return( x )
-    }
-)
-
-
-
-
-# hash[ key ] <- NULL : Removes key-value pair from hash
-setReplaceMethod( '[', c(x="hash", i="ANY", j="missing", value="NULL") ,
-    function( x, i, ...,  value ) {
-      del( i, x )
-      return( x )
-    }
-)
-  
-
-
-# TEST:
-# h[ "foo" ] <- letters # Assigns letters, a vector to "foo"
-# h[ letters ] <- 1:26
-# h[ keys ] <- value
-# h[ 'a' ] <- NULL 
-
-
-# ---------------------------------------------------------------------
-# $ -- DEPRECATED
-#   This is deprecated since '$' is defined on environments and 
-#   environments can be inherited in objects
-#
-# ---------------------------------------------------------------------
-
-# SPECIAL CASE: NULL value
-#   When assign a null values to a hash the key is deleted. It is 
-#   idiomatic when setting a value to NULL in R that that value is
-#   removed from a list or environment. 
-#   
-#   If R's behavior changes this will go away.
-#   It is interesting to note that [[ behaves this way
-#
-setReplaceMethod( '$', c( x="hash", value="NULL"),
-  function(x, name, value) {
-    remove( list=name, envir=x@.xData )
-    x
-  }
-)
-
-
-# ---------------------------------------------------------------------
-# [[ -- DEPRECATED:
-#   This is deprecated since this is handled by R natively.
-#   Return single value, key,i, is a name/gets interpretted.
-# 
-#   NB: We no longer use .get.
-# ---------------------------------------------------------------------
-
-setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="ANY") ,
-  function(x,i,value) {
-    assign( i, value, x@.xData )
-    return( x )
-  }
-)
-
-
-# CASE: hash$value <- NULL
-#   Deletes the value  
-setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="NULL") ,
-  function(x,i,value) {
-    rm( list=i, envir=x@.xData )
-    return( x )
-  }
-)
-
-
-# ---------------------------------------------------------------------
-# MISC. FUNCTIONS
-# ---------------------------------------------------------------------
-
-is.hash <- function(x) is( x, "hash" )
-
-as.list.hash <- function(x, all.names=FALSE, ...) 
-  as.list( x@.Data, all.names, ... )
-
-
-
-#' Test if a hash has no key-value pairs.
+#' Class "hash"
 #' 
-#' \code{is.empty} tests to see if any key value pairs are assigned on a
-#' \code{hash} object.
+#' Implements a S4 hash class in R similar to hashes / associatesd arrays /
+#' dictionaries in other programming languages.  Where possible, the hash class
+#' uses the standard R accessors: \code{\$}, \code{[} and \code{[[} as well as
+#' other common hash methods.  Hash construction is flexible and takes several 
+#' syntaxes and all hash operations are supported.
 #' 
-#' Returns \code{TRUE} if no key-value pairs are defined for the hash,
-#' \code{FALSE} otherwise.
+#' For shorter key-value pairs, lists yield higher performance but hashes 
+#' outperform list once the have an appreciable length (>100 elements). Hash 
+#' objects have defined methods that (should) make them flexible, intuitive and
+#' easy to use especially from those coming form other languages.
+#'  
+#' This class provides a hash/dictionary that provides the accessors and other
+#' methods common to other programming languages. The \code{haah} class inherits
+#' from environment and has no defined slots. It is essentially a wrapper arounf
+#' \code{\link[base]{environment}} and is very similar to reference classes in 
+#' that  most of the semantic are pass-by-reference rather than pass-by-value.
+#' For this reason, some of the behaviour is not as expected.
 #' 
-#' @param x hash object.
-#' @return logical.
-#' @author Christopher Brown.
-#' @seealso \code{\link{exists}}.
-#' @keywords methods
+#' @slot .Data an \code{\link[base]{environment}}
+#' 
+#' @author Christopher Brown
+#' 
+#' @seealso 
+#'   \link{Extract}
+#'   \code{\link{is.hash}}
+#'   \code{\link{as.list.hash}}
+#'   
 #' @examples
-#' 
-#'     h <- hash( a=1, b=2, c=3 )
-#'     is.empty(h)    # FALSE
-#'     clear(h)
-#'     is.empty(h)    # TRUE
-#'     h <- hash()
-#'     is.empty(h)    # TRUE
-#' 
-is.empty <- function(x) { 
-    if( class(x) != 'hash' ) stop( "is.empty only works on hash objects" )
-    if( length(x) == 0 ) TRUE else FALSE  
-}
+#'   
+#'   h <- new( "hash" )   # new empty hash
+#'   h <- hash()          # same
+#'   class(h)             # "hash"
+#'   is.hash(h)           # TRUE
+#'   
+#'   h[ letters ] <- 1:26 # populate the hash
+#'   
+#'   as.list( h )         # convert to a list
+#'
+#'   showClass("hash")
+#'
+#' @name hash-class
+#' @rdname hash-class
+#' @exportClass hash
+
+setClass( 'hash', contains = 'environment' )
 

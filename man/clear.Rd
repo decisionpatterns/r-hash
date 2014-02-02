@@ -1,47 +1,44 @@
+\docType{methods}
 \name{clear}
 \alias{clear}
-\alias{clear-methods}
-
 \alias{clear,hash-method}
-\title{ Removes all key-value pairs from a hash }
-\description{
-  \code{clear} removes all key-values from a hash.
-}
+\alias{clear-methods}
+\title{Removes all key-value pairs from a hash}
 \usage{
-   clear(x)
+clear(x)
+
+\S4method{clear}{hash}(x)
 }
 \arguments{
-  \item{x}{ A \code{hash} object. }
+  \item{x}{A \code{hash} object.}
 }
-
-\details{
-    Currently \code{clear} removes (\code{rm}) the key-value pairs on
-    the hash.  For large hashes it might be faster to reinitialize the
-    hash, though this might cause memory leaks.
-}
-
 \value{
-  None. Method clear exists entirely for its side effects.
+None. Method clear exists entirely for its side effects.
 }
-
+\description{
+\code{clear} removes all key-values from a hash.
+}
+\details{
+Currently \code{clear} removes (\code{rm}) the key-value
+pairs on the hash. For large hashes it might be faster to
+reinitialize the hash, though this might cause memory
+leaks.
+}
 \note{
-    \code{clear} should be called prior to removing a hash.  This ensures
-    that the memory from the environment is freed. 
+\code{clear} should be called prior to removing a hash.
+This ensures that the memory from the environment is freed.
 }
-
-\author{ Christopher Brown }
-\seealso{ \code{\link{del}} to remove specific key-values 
-from the hash. \code{\link{hash}}. }
-
 \examples{
-
-  h <- hash( letters, 1:26 )
+h <- hash( letters, 1:26 )
   h # An object of type 'hash' containing 26 key-value pairs.
-  clear(h)  
+  clear(h)
   h # An object of type 'hash' containing 0 key-value pairs.
-
+}
+\author{
+Christopher Brown
+}
+\seealso{
+\code{\link{del}} to remove specific key-values from the
+hash.  \code{\link{hash}}.
 }
 
-\keyword{ methods }
-\keyword{ data }
-\keyword{ manip }

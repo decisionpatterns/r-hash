@@ -1,3 +1,22 @@
+# 2014-02-01 Version 3.0.0
+
+## Incompatibe Changes breaking some backward compatability:
+
+* `h[]` returns a copy of h
+
+
+## New features 
+
+* `setkeys`
+
+
+## Organizational Changes
+
+* Fully converted to roxygen2 documentation
+* Better organized files
+
+
+
 2013-02-20 Version 2.2.6
   - Fixes bug with '[' assessor which was broken.  Thanks to Jeremy Rassen.
   - Adds some test for accessors using testthat

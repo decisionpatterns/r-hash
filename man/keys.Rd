@@ -1,47 +1,55 @@
+\docType{methods}
 \name{keys}
-
+\alias{`keys`<-,hash,NULL-method}
 \alias{keys}
+\alias{keys,hash-method}
+\alias{keys-methods}
+\alias{keys<-}
+\alias{keys<-,hash,ANY-method}
+\alias{keys<-,hash,character-method}
+\alias{keys<--methods}
 \alias{names}
 \alias{names.hash}
-\alias{keys-methods}
-\alias{keys,hash-method} 
-
-\title{ Returns key(s) from a hash }
-
-\description{
-    Returns the key(s) from a hash
-}
-
+\title{keys - get/set key(s) from a hash}
 \usage{
-  keys(x)
+keys(x)
 
-  \method{names}{hash}(x)
+\S4method{keys}{hash}(x)
+
+\method{names}{hash}(x)
+
+keys(x) <- value
 }
-
 \arguments{
-  \item{x}{ A \code{\link{hash}} object. }
-}
+  \item{x}{A \code{\link{hash}} object.}
 
-\details{
-  Returns the character vector containing the keys of a hash object.
+  \item{value}{character or object coercable to character}
 }
-
 \value{
-  \item{keys}{A vector of type character}
+For \code{keys} and \code{names}, a character vector of key
+names For the replacement methods \code{keys<-}, a hash
+object with the keys renamed to \code{value}
 }
-
-\author{ Christopher Brown }
-
-\seealso{ See Also \code{\link{hash}}. }
-
+\description{
+Returns the key(s) from a hash
+}
+\details{
+Returns the character vector containing the keys of a hash
+object.
+}
 \examples{
-
-  h <- hash( letters, 1:26 )
+h <- hash( letters, 1:26 )
   keys(h)  # letters
 
   names(h) # same
-}   
 
-\keyword{ methods }
-\keyword{ data }
-\keyword{ manip }
+  keys( h ) <- rev( keys(h) )
+}
+\author{
+Christopher Brown
+}
+\seealso{
+\code{\link{setkeys}} : rename specific hash keys.
+\code{\link{hash}} : hash object
+}
+
