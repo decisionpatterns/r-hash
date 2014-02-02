@@ -1,12 +1,11 @@
 \docType{methods}
 \name{keys}
-\alias{`keys`<-,hash,NULL-method}
 \alias{keys}
 \alias{keys,hash-method}
 \alias{keys-methods}
 \alias{keys<-}
 \alias{keys<-,hash,ANY-method}
-\alias{keys<-,hash,character-method}
+\alias{keys<-,hash,NULL-method}
 \alias{keys<--methods}
 \alias{names}
 \alias{names.hash}
@@ -43,7 +42,8 @@ h <- hash( letters, 1:26 )
 
   names(h) # same
 
-  keys( h ) <- rev( keys(h) )
+  #' Rename keys
+  # keys( h ) <- rev( keys(h) )
 }
 \author{
 Christopher Brown

@@ -18,7 +18,7 @@
 #' that  most of the semantic are pass-by-reference rather than pass-by-value.
 #' For this reason, some of the behaviour is not as expected.
 #' 
-#' @slot .Data an \code{\link[base]{environment}}
+#' @slot .xData an \code{\link[base]{environment}}
 #' 
 #' @author Christopher Brown
 #' 

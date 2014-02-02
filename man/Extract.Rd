@@ -1,14 +1,13 @@
 \docType{methods}
 \name{Extract}
-\alias{#}
 \alias{$<-,hash,NULL-method}
 \alias{Extract}
 \alias{[,hash,ANY,missing,missing-method}
-\alias{[,hash,mising-method}
 \alias{[,hash,missing,missing,missing-method}
-\alias{[,hash-method}
-\alias{[<-,hash,ANY-method}
-\alias{[[,hash,ANY-method}
+\alias{[<-,hash,ANY,missing,ANY-method}
+\alias{[<-,hash,ANY,missing,NULL-method}
+\alias{[[<-,hash,ANY,missing,ANY-method}
+\alias{[[<-,hash,ANY,missing,NULL-method}
 \title{Extract}
 \usage{
 \S4method{[}{hash,ANY,missing,missing}(x, i, j, ..., drop)
@@ -39,29 +38,30 @@
   returns the values of a single key. The replacement
   method, \code{[[<-} mutates the hash in place.
 
-  \code{[} is a subseting operator.  It returns a hash
-  slice, i.e. another hash of of the specified keys. Unlike
-  the other accessor methods, \code{[} returns a
-  \emph{copy}.
+  \code{[} is a slice operator.  It returns a subset of key
+  value pairs of the hash, i.e. another hash with specifies
+  keys-value paris. Unlike the other accessor methods,
+  \code{[} returns a \emph{copy}.
 
-  simplifies them to the lowest order (c.f. simplify).  It
-  is very similar to \code{ h[[ keys(h) ]] }, An optional
-  key.  It is identical to \code{ h[[ keys(h) ]] }.
+  NAMED ACCESS/REPLACEMENT:
 
-  h$x : returns value associated with key \code{x};
-  \code{x} is taken as a literal and not interpreted.  h$x
-  <- value : sets valie associated witk key \code{x} to
-  \code{value}; \code{x} is taken as a literal and not
-  interpreted.
+  h$x : returns value of key \code{x}; h$x <- value : sets
+  key \code{x} to \code{value}; h$x <- NULL : deletes
+  key-value pair \code{x}
 
-  h[[x]] : returns values associated with key(s) \code{x};
-  \code{x} is interpreted h[[x]] <- value : sets the values
-  with the associated keys.
+  INTERPRETED ACCES/REPLACEMENT:
 
-  h[] : returns a copy of h h[x] : a hash slice
+  h[[x]] : returns value of key \code{x}; \code{x} is
+  interpreted.  h[[x]] <- value : sets the values of key
+  \code{x}; \code{x} is interpreted.  h[[x]] <- NULL :
+  deletes key-value pair \code{x}; \code{x} is interpreted.
 
-  h[] <- values : error, undefined h[x] <- values : set
-  values for x
+  HASH SLICING: h[] : returns a copy of h, same as
+  \code{copy(h)} h[x] : a hash slice of keys
+
+  h[] <- value : error, undefined key h[x] <- value : set
+  values for keys \code{x} to \code{value}(s) h[x] <- NULL
+  : delete keys \code{x}
 
   \code{$} and \code{[[} return the value for the supplied
   argument. If \code{i} is not a key of \code{x},
@@ -75,52 +75,54 @@
 \description{
 These are the hash accessor methods. They closely follow
 the R style.
-
-#
 }
 \examples{
-h <- hash( letters, 1:26 )
-  values(h)  # 1:26
-  values(h, simplify = FALSE )
-  values(h, USE.NAMES = FALSE )
+h <- hash( c('a','b','c'), 1:3 )
 
-  h <- hash( 1:26, letters )
-  values(h)
-  values(h, keys=1:5 )
-  values(h, keys=c(1,1,1:5) )
-  values(h, keys=1:5) <- 6:10
-  values(h) <- rev( letters )
+  # NAMED ACCESS
 
-  h[ "foo" ] <- letters # Assigns letters, a vector to "foo"
-  h[ letters ] <- 1:26
-  h[ keys ] <- value
-  h[ 'a' ] <- NULL
-h <- hash()
-  h <- hash( letters, 1:26 )
+  h$a  # 1
+  h$c  # 3
 
-  h$a
-  h$a <- "2"
-  h$z <- NULL          # Removes 'z' from
+  # class of values change automatically
+  class(h$a)  # integer
+  h$a <- 1.1
+  class(h$a)  # numeric
 
-  h[['a']]
-  h[['a']] <- 23
+  # values can contain more complex objects
+  h$a <- 1:6
+  h
 
-  h[ letters[1:4] ]    # hash with a,b,c,d
-  h[ letters[1:4] ] <- 4:1
+  h$a <- NULL  # DELETE key 'a', will return null
+
+
+  # INTERPRETED ACCESS
+
+  h[[ "a" ]] <-"foo"    # Assigns letters, a vector to "foo"
+  nm = "a"
+
+  # SLICE ACCESS
+  h[ nm ] <- "bar"   # h$a == bar
+  h[ nm ] <- NULL
+
+
+  # Slice
+  h[ keys(h) ]
+  h[ keys(h) ] <- list( 1:2, 1:3 )
+  h
 }
 \author{
 Christopher Brown
-
-Christopher Brown
 }
 \seealso{
-\code{\link{hash}} \code{\link{sapply}}
-\code{\link[base]{drop}}
+\code{\link{del}} for removing keys \code{\link{clear}} for
+removing all keys
 
-\code{\link{hash}}, \code{\link{values}},
-\code{\link{set}}, \code{\link{as.list}}
+\code{\link{keys}} to get/set/rename keys
+\code{\link{values}} to get/set/edit values
+
+\code{\link{set}} to set values internal method
+
+\code{\link{hash}}
 }
-\keyword{data}
-\keyword{manip}
-\keyword{methods}
 

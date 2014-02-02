@@ -30,7 +30,7 @@ reason, some of the behaviour is not as expected.
 \section{Slots}{
 
 \describe{
-\item{\code{.Data}}{an \code{\link[base]{environment}}}
+\item{\code{.xData}}{an \code{\link[base]{environment}}}
 }}
 \examples{
 h <- new( "hash" )   # new empty hash

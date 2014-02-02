@@ -1,11 +1,13 @@
+\docType{methods}
 \name{setkeys}
 \alias{setkeys}
-\alias{setkeys.hash}
+\alias{setkeys,hash,ANY,ANY-method}
+\alias{setkeys,hash-method}
 \title{setkeys - change/rename the keys of a hash}
 \usage{
 setkeys(x, old, new)
 
-\method{setkeys}{hash}(x, old, new)
+\S4method{setkeys}{hash}(x, old, new)
 }
 \arguments{
   \item{x}{hash object to rename keys on}
@@ -20,7 +22,7 @@ setkeys(x, old, new)
   collision between old and new names, the old names are
   first copied to a temporary slot to ensure
 
-  \code{setkeys} is S3 generic so that other packages might
+  \code{setkeys} is S4 generic so that other packages might
   also use the generic functions}
 }
 \value{
@@ -46,6 +48,6 @@ h <- hash( letters, 1:26 )
    h3
 }
 \seealso{
-\code{\link{keys}}
+\code{\link{keys}} \code{\link{hash}}
 }
 

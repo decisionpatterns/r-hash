@@ -25,7 +25,8 @@
 #'
 #'   make.keys( letters )
 #'   make.keys( 1:26 ) 
-#' 
+#' @export   
+
 
 make.keys <- function(key) {
 

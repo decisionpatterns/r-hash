@@ -7,14 +7,21 @@
 
 ## New features 
 
-* `setkeys`
+* New ways to edit key names:
+**  `setkeys` allows setting of key names similar to data.table's `setnames`
+** `keys<-` for setting simple keys 
+
+* `names` works same as `keys`
 
 
 ## Organizational Changes
 
 * Fully converted to roxygen2 documentation
 * Better organized files
+* much improved documetation.
 
+
+# OlDER CHANGES 
 
 
 2013-02-20 Version 2.2.6

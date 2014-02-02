@@ -13,13 +13,6 @@ ALLOWABLE VALUES
 
 NOTES
 ----------------------------------------
-  R is slowly moving toward a native implementation of hashes 
-  using enviroments, (cf. ?Extract). Access to 
-  environments using $ and [[ has been available for some time and
-  recently objects can inherit from environments, etc. But many features
-  that make hashes/dictionaries great are still lacking, such
-  as the slice operation, [.
-
   The hash package is the only full featured hash 
   implementation for the R language. It provides more features and 
   finer control of the hash behavior than the native feature set and 
@@ -40,6 +33,5 @@ NOTES
   MEMORY. Objects of class hash do not release memory with a call to 
   *rm*.  *clear* must be called before *rm* to properly
   release the memory.  
-
 
 

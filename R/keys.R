@@ -24,7 +24,8 @@
 #' 
 #'   names(h) # same
 #'   
-#'   keys( h ) <- rev( keys(h) ) 
+#'   #' Rename keys
+#'   # keys( h ) <- rev( keys(h) ) 
 #'
 #' @docType methods
 #' @rdname keys
@@ -53,6 +54,7 @@ names.hash <- function(x) keys(x)
 #' @rdname keys
 #' @docType methods
 #' @aliases keys<--methods
+#' @export
 
 setGeneric( "keys<-", function(x,value) standardGeneric( "keys<-") )
 
@@ -68,7 +70,7 @@ setReplaceMethod( "keys", c('hash','ANY'),
 )  
 
 
-#' @name keys<-,hash,character-method
+#' @name keys<-,hash,ANY-method
 #' @rdname keys
 
 setReplaceMethod( "keys", c('hash','ANY'), 
@@ -79,7 +81,7 @@ setReplaceMethod( "keys", c('hash','ANY'),
 ) 
 
 
-#' @name `keys`<-,hash,NULL-method
+#' @name keys<-,hash,NULL-method
 #' @rdname keys
 
 setReplaceMethod( "keys", c('hash','NULL'), 

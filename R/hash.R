@@ -61,38 +61,27 @@
 #' 
 #' @author Christopher Brown
 #' 
-#' @seealso \code{\link{.set}}, \code{\link{Extract}}
+#' @seealso 
+#'   \code{\link{Extract}}
 #' 
 #' @examples
 #' 
-#'   hash()
+#'   hash()      # Empty 
+#'   h <- hash() # give a name to the hash 
 #' 
-#'   hash( key=letters, values=1:26 )
+#'   hash( key=letters, values=1:26 )  # Two lists/vectors or equal length
 #'   
 #'   hash( 1:3, lapply(1:3, seq, 1 ))
 #'   
-#'   hash( a=1, b=2, c=3 )
-#'   hash( c(a=1, b=2, c=3) ) 
-#'   hash( list(a=1,b=2,c=3) )
+#'   hash( a=1, b=2, c=3 )             # key-value pairs   
+#'   hash( c(a=1, b=2, c=3) )          # vector of key-value pairs
+#'   hash( list(a=1,b=2,c=3) )         # list of key-value pairs
 #' 
 #'   hash( c("foo","bar","baz"), 1:3 )
 #'   hash( c("foo","bar","baz"),  lapply(1:3, seq, 1 ) )
-#'   hash( letters, 1:26 )
-#' 
-#'   h <- hash( letters, 1:26 )
-#'   h$a
-#'   h$b
-#'   h[[ "a" ]]
-#'   h[ letters[1:3] ]
-#' 
-#'   h$a<-100
-#'   # h[['a']]<-letters
-#' 
-#'   is.hash(h)
-#'   as.list(h)
-#' 
-#'   clear(h)
-#'   rm(h)
+#'  
+#'   is.hash( hash() )
+#'   as.list(h)   # CONVERT TO LIST
 #' 
 #' @rdname hash
 #' @aliases hash 

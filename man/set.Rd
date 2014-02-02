@@ -70,11 +70,11 @@ and their corresponding replacement methods.
 \examples{
 h <- hash()
 
-  .set( h, keys=letters, values=1:26 )
-  .set( h, a="foo", b="bar", c="baz" )
-  .set( h, c( aa="foo", ab="bar", ac="baz" ) )
+  hash:::.set( h, keys=letters, values=1:26 )
+  hash:::.set( h, a="foo", b="bar", c="baz" )
+  hash:::.set( h, c( aa="foo", ab="bar", ac="baz" ) )
   clear(h)
-  .set( h, letters, values )
+  hash:::.set( h, letters, values )
 }
 \author{
 Christopher Brown
