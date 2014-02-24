@@ -1,3 +1,7 @@
+# 2014-02-24 Version 3.0.1
+
+* Add importFrom(methods) to NAMESPACE file
+
 # 2014-02-01 Version 3.0.0
 
 ## Incompatibe Changes breaking some backward compatability:
