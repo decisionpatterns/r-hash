@@ -1,14 +1,15 @@
 library(hash)
-library( testthat )
+library(testthat)
 
 context('clear')
 
-h <- hash( letters, 1 )
+  h <- hash( letters, 1 )
 
   expect_is( h, "hash" )
   expect_that( length(h), equals(26) )
-  clear(h)
 
+  clear(h)
   expect_that( length(h), equals(0) ) 
 
-
+  rm(h)
+  expect_false( exists('h') )

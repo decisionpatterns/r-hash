@@ -1,4 +1,5 @@
-library( hash ) 
+library(hash)
+library(testthat)
 
 context('has.key')
 

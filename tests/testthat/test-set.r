@@ -1,3 +1,5 @@
+library(hash)
+library(testthat)
 
 # TEST FILE FOR hash METHODS set
 

@@ -1,7 +1,7 @@
 Package: hash
 Type: Package
 Title: Full feature implementation of hash/associated arrays/dictionaries
-Version: 3.0.1
+Version: 3.0.2
 Date: 2014-11-20
 Author: Christopher Brown
 Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
@@ -21,4 +21,3 @@ Description: This package implements a data structure similar to dictionaries
     methods and object make hashes flexible and easy to use.
 License: GPL (>= 2)
 LazyLoad: yes
-
