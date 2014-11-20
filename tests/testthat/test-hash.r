@@ -13,8 +13,17 @@ context('constructor methods')
   expect_equal( length(keys(h)), 0)
   expect_equal( length(values(h)), 0)
 
-  # Set hash using objects of equal length 
-  h <- hash( a=1, b=2, c=3 )
+
+  h <- hash( new.env() )               # from environment 
+  expect_is( h , 'hash' )
+  expect_true( is.hash(h) )
+  expect_equal( length(h), 0)
+  expect_equal( length(keys(h)), 0)
+  expect_equal( length(values(h)), 0)
+
+
+
+  h <- hash( a=1, b=2, c=3 )           # Set hash from key-value pairs
   expect_is( h , 'hash' )
   expect_true( is.hash(h) )
   expect_equal( length(h), 3)

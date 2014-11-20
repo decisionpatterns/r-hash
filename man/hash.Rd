@@ -91,6 +91,8 @@ the internal environment.
 hash()                            # empty
   h <- hash()                       # associate a name to the hash
 
+  hash( new.env() )                 # from environment
+
   hash( a=1, b=2, c=3 )             # key-value pairs using named arguments
 
   hash( letters[1:3], 1:3 )         # unamed args: two equal length vectors

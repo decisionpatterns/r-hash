@@ -75,6 +75,8 @@
 #'   hash()                            # empty 
 #'   h <- hash()                       # associate a name to the hash 
 #' 
+#'   hash( new.env() )                 # from environment 
+#'      
 #'   hash( a=1, b=2, c=3 )             # key-value pairs using named arguments   
 #'   
 #'   hash( letters[1:3], 1:3 )         # unamed args: two equal length vectors 
@@ -96,14 +98,17 @@ hash <- function( ... ) {
 
   li <- list(...)  
 
-  # INITIALIZE A NEW HASH   
-  h <- new( 
-    "hash" , 
-     new.env( hash = TRUE , parent=emptyenv() )  
-  )
-
-  if ( length(li) >  0  ) { 
-    if( length(li) > 0 ) .set( h, ... )
+  if( length(li) == 1 && class(li[[1]]) == 'environment' ) { 
+    h <- new( "hash", li[[1]] )
+  } else {    
+    h <- new( 
+      "hash" , 
+       new.env( hash = TRUE , parent=emptyenv() )  
+    )
+  
+    if ( length(li) >  0  ) { 
+      if( length(li) > 0 ) .set( h, ... )
+    }
   }
 
   return(h)
