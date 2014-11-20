@@ -2,7 +2,7 @@
 # length.R
 #   return the number of keys in a hash
 #   NB:
-#     - This doesn't work: env.profile(x@.xData)$nchains
+#     - This doesn't work: env.profile(x@.Data)$nchains
 #  ---------------------------------------------------------------------
 
 #' length Returns the number of key-value pairs in a hash
@@ -25,6 +25,6 @@
 #' 
 #' @rdname hash
 
-setMethod( "length", "hash", function(x) length( x@.xData ) )
+setMethod( "length", "hash", function(x) length( x@.Data ) )
 
 

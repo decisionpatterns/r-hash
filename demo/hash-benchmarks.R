@@ -118,7 +118,7 @@ for( size in 2^(1:13) ) {
   
   print(
   res <-  benchmark( 
-      `get/env` = for( k in ke ) get( k, ha@.xData ) ,
+      `get/env` = for( k in ke ) get( k, ha@.Data ) ,
       `get/hash`   = for( k in ke ) get(k, ha) ,
       `hash`  = for( k in ke ) ha[[k]] ,
       `list`  = for( k in ke ) li[[k]] ,
@@ -204,7 +204,7 @@ for( size in 2^(0:13) ) {
       `hash`   = for( ke in kes ) ha[ ke ] ,
       `list`   = for( ke in kes ) li[ ke ] ,
       `vector` = for( ke in kes ) ve[ ke ] ,
-      `mget`   = for( ke in kes ) mget( ke, ha@.xData ) , 
+      `mget`   = for( ke in kes ) mget( ke, ha@.Data ) , 
       replications = 5 ,
       order = "relative"
     )

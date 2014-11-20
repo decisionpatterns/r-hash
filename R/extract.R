@@ -218,7 +218,7 @@ setReplaceMethod( '[', c(x="hash", i="ANY", j="missing", value="NULL") ,
 
 setReplaceMethod( '$', c( x="hash", value="NULL"),
   function(x, name, value) {
-    remove( list=name, envir=x@.xData )
+    remove( list=name, envir=x@.Data )
     x
   }
 )
@@ -241,7 +241,7 @@ setReplaceMethod( '$', c( x="hash", value="NULL"),
 
 setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="ANY") ,
   function(x,i,value) {
-    assign( i, value, x@.xData )
+    assign( i, value, x@.Data )
     return( x )
   }
 )
@@ -252,7 +252,7 @@ setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="ANY") ,
   
 setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="NULL") ,
   function(x,i,value) {
-    rm( list=i, envir=x@.xData )
+    rm( list=i, envir=x@.Data )
     return( x )
   }
 )
