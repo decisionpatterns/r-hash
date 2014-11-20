@@ -5,7 +5,7 @@ Version: 3.0.1
 Date: 2014-11-20
 Author: Christopher Brown
 Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
-URL: https://github.com/ctbrown/r-hash
+URL: https://github.com/decisionpatterns/r-hash
 Depends:
     R (>= 3.0.0),
 Imports:
@@ -21,3 +21,4 @@ Description: This package implements a data structure similar to dictionaries
     methods and object make hashes flexible and easy to use.
 License: GPL (>= 2)
 LazyLoad: yes
+
