@@ -1,6 +1,7 @@
-
 library(hash)
 library( testthat )
+
+context('clear')
 
 h <- hash( letters, 1 )
 

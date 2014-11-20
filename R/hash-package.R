@@ -43,5 +43,7 @@
 #' 
 #' @name hash-package
 #' @docType package
+#' @import methods
+#' @import utils
 
 NULL

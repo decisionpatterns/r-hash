@@ -1,8 +1,8 @@
 #' set -assign key-value pair(s) to a hash
 #' 
-#' \code{.set} is an internal method for assigning key-value pairs to a
+#' \code{.set} is an _internal method_ for assigning key-value pairs to a
 #' \code{\link{hash}}.  Normally, there is no need to use this function.
-#' Convenient access is provided by: \code{hash}, \code{$}, \code{[}, \code{[[},
+#' Convenient access is provided by: \code{$}, \code{[}, \code{[[},
 #' \code{values} and their corresponding replacement methods.
 #' 
 #' @param hash An hash object on which to set the key-value pair(s)

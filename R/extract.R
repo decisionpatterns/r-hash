@@ -11,6 +11,8 @@
 # @param keys a vector of keys to be returned.
 # @param value For the replacement method, the value(s) to be set.
 #' @param ...  Arguments passed to additional methods \code{\link{sapply}}
+#' @param value the value to set for the key-value pair
+#' @param name the key name
 #'
 #'
 #' \code{$} is a look-up operator for a single key.  The base \code{$} method

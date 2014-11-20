@@ -1,6 +1,8 @@
 
 # TEST FILE FOR hash METHODS set
 
+context( '.set')
+
 library(hash)
 h <- hash()
 

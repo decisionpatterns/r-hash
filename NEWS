@@ -1,9 +1,15 @@
+# 2014-11-20 Version 3.0.1 
+
+* Move to new testthat standard
+* Fix imports of utils and method packages
+* Documentation fixes
+
 # 2014-02-01 Version 3.0.0
 
 ## Incompatibe Changes breaking some backward compatability:
 
 * `h[]` returns a copy of h
-
+* .set is nolonger supported.  Standard R accessors should be used.
 
 ## New features 
 

@@ -1,6 +1,8 @@
 library(hash)
 library(testthat)
 
+context('testing accessors')
+
 h0 <- hash()
 h <- hash( letters, 1:26 )
 
@@ -11,6 +13,7 @@ h <- hash( letters, 1:26 )
 # EMPTY HASH
   expect_that( length(h0), equals(0) )
   expect_that( length(h0), equals(0) )
+
 
 # POPULATED HASH  
   expect_that( length(h), equals(26) )
@@ -61,4 +64,4 @@ h <- hash( letters, 1:26 )
   h$b <- -2
   expect_that( h$b, equals(-2) )
 
-# TEST [ <- 
+
