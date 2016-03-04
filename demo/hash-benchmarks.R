@@ -20,7 +20,7 @@ keys   <- as.character( sample(1:size) )  # A vector of
 values <- as.character( rnorm( size ) )
 
 lst <- list()
-for( k in keys )
+# for( k in keys )
 
 # Which is faster setting by mapply or doing a for-loop
 # Intialize parameters and prepare things.
@@ -132,6 +132,7 @@ for( size in 2^(1:13) ) {
 
 }
 
+library(lattice)
 xyplot( 
   elapsed ~ size, groups=test, 
   data=bm2, 
@@ -143,7 +144,7 @@ xyplot(
   xlab = "Object Size ( n elements )" 
 )  
 
-
+library(ggplot2)
 p <- ggplot(bm2 , aes(x=size, y=jitter(elapsed), group=test, color=test ))
 p + geom_line() + geom_point() + scale_x_log10() + ylab( "Ellapse Time(s)")
 

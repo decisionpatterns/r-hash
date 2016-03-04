@@ -1,4 +1,3 @@
-
 hash 
 ====
 
@@ -7,40 +6,41 @@ hash
 [![Downloads](http://cranlogs.r-pkg.org/badges/hash?color=brightgreen)](http://www.r-pkg.org/pkg/hash)
  
 
+The *hash* package provides the only fully-functional hash/dictionaryfor the R language. It provides richer features and 
+finer control of hash behavior than using native R structures like list or environments and has as a user-friendly interface. Performance-wise it has similar and sometimes better performance. 
 
 
-The *hash* package provides a fully-functional hash / dictionary functionality
-for the R language (http://decisionpatters.com).
+Installation
+----
+
+Latest Release:
+
+    install.packages('hash')
 
 
-ALLOWABLE VALUES
-----------------------------------------
+Development Version:
 
-  HASH KEYS must be a valid character value and may not be the empty 
-  string \code{""}. 
+    install.packages('devtools')
+    devtools::install_github('decisionpatterns/hash')
 
-  HASH VALUES can be any R value, vector or object. 
 
-NOTES
-----------------------------------------
-The hash package is the only full featured hash 
-implementation for the R language. It provides more features and 
-finer control of the hash behavior than the native feature set and 
-has similar and sometimes better performance.
 
-PASS-BY REFERENCE. hashes are environments, special objects in R 
-where only one copy exists globally. When provide as an argument to 
-a function, no local copy is made and any changes to the hash in the
-functions are reflected globally.
+Allowable Values  
+----
 
-PERFORMANCE.  Hashes are based on R's native environments and are 
-designed to be exceedingly fast using the environments internal 
-hash table.  For small data structures, a list will out-perform a hash
-in nearly every case.  For larger data structure, i.e. > 500 key
-value pair the performance of the hash becomes faster.  Much beyond that
-the performance of the hash far outperforms native lists.  
+**KEYS** must be a valid character value and may not be the empty string \code{""}. Keys must be unique.
 
-MEMORY. Objects of class hash do not release memory with a call to 
-*rm*.  *clear* must be called before *rm* to properly
-release the memory.  
+**VALUES** can be any R value, vector, object, etc. 
 
+
+Usage Notes
+----
+
+Hashes probably work about how you would expect, but since there are built from R's native environments. There are three things to Remember:
+
+**PASS-BY REFERENCE**. hashes are environments, special objects in R where only one copy exists globally. When passed as an argument to a function, no local copy is made and any changes to the hash in the functions are reflected globally, i.e. in the caller's namespace.
+
+**PERFORMANCE**.  Hashes are designed to be exceedingly fast using R environment's internal hash table.  The hash function is not without its cost. For small data structures, a named lists and vectors will out-perform a hash in nearly every case. After approximately 500+ elements, the performance of the hash becomes faster than native lists.  
+
+**MEMORY**. Objects of class hash do not release memory with a call to *rm*.  *clear* must be called before *rm* to properly
+release the memory. (This may change in the future) 
