@@ -1,11 +1,13 @@
 Package: hash
 Type: Package
 Title: Full feature implementation of hash/associated arrays/dictionaries
-Version: 3.0.5
-Date: 2014-11-20
+Version: 3.0.6
+Date: 2016-03-04
 Author: Christopher Brown
 Maintainer: Christopher Brown <chris.brown@decisionpatterns.com>
-URL: https://github.com/decisionpatterns/r-hash
+URL: 
+    https://github.com/decisionpatterns/r-hash 
+    http://www.decisionpatterns.com
 Depends:
     R (>= 3.1.0),
 Imports:
