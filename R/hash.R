@@ -98,8 +98,13 @@ hash <- function( ... ) {
 
   li <- list(...)  
 
-  if( length(li) == 1 && class(li[[1]]) == 'environment' ) { 
-    h <- new( "hash", li[[1]] )
+  if( length(li) == 1 && is.environment( li[[1]] ) ) { 
+    h <- new( "hash", parent=emptyenv() )
+    h@.xData <- li[[1]]
+    
+  } else if( length(li) == 1 && is.list( li[[1]] ) ) {
+    h <- hash( as.environment(li[[1]]) )
+    
   } else {    
     h <- new( 
       "hash" , 
@@ -129,8 +134,7 @@ is.hash <- function(x) is( x, "hash" )
 
 #' @aliases as.list.hash
 #' @rdname hash
-#' @export as.list.hash
+#' @export 
 
 as.list.hash <- function(x, all.names=FALSE, ...) 
   as.list( x@.Data, all.names, ... )
-
