@@ -3,7 +3,9 @@ library(testthat)
 
 context('has.key')
 
-  #' Ensure that there are no keys on hash
+test_that("has.key", {
+  #' Ensure that there are no keys on emptyhash
   h <- hash()
-  all( has.key( 'c' , h ) == FALSE )
-
+  'c' %>% has.key(h) %>% expect_false()
+  
+})

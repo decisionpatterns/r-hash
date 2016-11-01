@@ -3,13 +3,15 @@ library(testthat)
 
 context('clear')
 
+test_that( "clear", {
   h <- hash( letters, 1 )
 
-  expect_is( h, "hash" )
-  expect_that( length(h), equals(26) )
+  h %>% expect_is("hash")
+  h %>% length %>% expect_equal(26) 
 
   clear(h)
-  expect_that( length(h), equals(0) ) 
+  h %>% length %>% expect_equal(0)
 
   rm(h)
-  expect_false( exists('h') )
+  exists('h') %>% expect_false()
+})

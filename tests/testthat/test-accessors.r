@@ -1,67 +1,79 @@
-library(hash)
-library(testthat)
+# library(hash)
+# library(testthat)
 
-context('testing accessors')
+context('accessors')
 
 h0 <- hash()
 h <- hash( letters, 1:26 )
 
 # OBJECT CREATION / TYPE
-  for( h in list( h0, h) ) expect_is( h, "hash" )
+test_that( "OBJECT CREATION / TYPE", {
+  h %>% expect_is("hash")
+  h0 %>% expect_is("hash")
+})
 
 
 # EMPTY HASH
-  expect_that( length(h0), equals(0) )
-  expect_that( length(h0), equals(0) )
-
+test_that( "EMPTY HASH", {
+  h0 %>% expect_is('hash')
+  length(h0) %>% expect_equal(0) 
+})
 
 # POPULATED HASH  
-  expect_that( length(h), equals(26) )
-  expect_that( keys(h), is_identical_to(letters) )
-               
+test_that( "POPULATED HASH", {
+  h %>% expect_is('hash')
+  h %>% length %>% expect_equal(26)
+  h %>% keys %>% expect_identical(letters)
+})               
+
                
 # ALL HASHES
+test_that( "ALL HASHES", {
   for( h in list( h0, h) ) {
-    expect_that( 
-      h[['missing']], is_identical_to(NULL)
-      , label="Attempt to retrieve missing key" 
-    )  
+    h[['missing']] %>% expect_identical(NULL, label = "Attempt to retrieve missing key" )
   }
+})
              
-             
-# TEST [[             
+# TEST [[   
+test_that( "[[", {
   for( h in list( h0, h ) ) {
     expect_error( h[[NULL]] )
-    expect_error( h[[NA] ])
+    expect_error( h[[NA]] )
     expect_error( h[[]] )
     expect_error( h[[letters]] )
   }
 
-  for( n in 1:26 ) expect_that( h[[ letters[n] ]], equals(n) )  
-
+  for( n in 1:26 ) 
+    h[[ letters[n] ]] %>% expect_identical(n)  
+})
 
                
-# TEST $                
-  expect_that( h$a, equals(1)  )
-  expect_that( h$z, equals(26) )             
-        
+# TEST $   
+test_that("$", {
+  h$a %>% expect_equal(1)
+  h$z %>% expect_equal(26)             
+})        
                
 # TEST [
+test_that( "[", {
   for( h in list( h0, h ) ) {
     expect_error( h[[NULL]] )
-    expect_error( h[[NA] ])
+    expect_error( h[[NA]] )
     expect_error( h[[]] )
     expect_error( h[[letters]] )
   }
-  expect_that( h[ letters ], equals(h) )             
   
+  h[letters] %>% expect_equal(h)
+})
                
 # TEST [[ <- 
+test_that( "[[<-", {
   h[['a']] <- -1             
   expect_that( h[['a']], equals(-1) )             
-               
+})
+
 # TEST $<-             
+test_that( "$<-", {
   h$b <- -2
   expect_that( h$b, equals(-2) )
-
-
+})
