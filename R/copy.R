@@ -35,10 +35,13 @@ setGeneric( 'copy', function(x,...) standardGeneric( 'copy'  ) )
 #' @rdname copy
 
 setMethod( 'copy', 'hash', 
-  function(x, ... ) 
-    if( length(x) > 0 ) { 
+  function(x, ... ) { 
+    len <- length(x)
+    if( len == 0 ) {
+      hash()
+    } else {
       hash( mget( keys(x), x@.Data ) ) 
-    } else { 
-      hash()  
     }
+  }
 )
+      
