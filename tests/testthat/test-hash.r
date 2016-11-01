@@ -26,6 +26,17 @@ test_that( 'from environment', {
   h %>% values %>% length %>% expect_equal(0)
 })
 
+context('.. from list') 
+test_that( 'from list', {
+  h <- hash( list() )               # from environment 
+  h %>% expect_is('hash')
+  h %>% is.hash %>% expect_true()
+  h %>% length %>% expect_equal(0)
+  h %>% keys %>% length %>% expect_equal(0)
+  h %>% values %>% length %>% expect_equal(0)
+})
+
+
 context('.. from key-value pairs')
 test_that( 'from key-value pairs', {
   h <- hash( a=1, b=2, c=3 )           # Set hash from key-value pairs
@@ -100,12 +111,3 @@ test_that( 'character & list', {
   expect_equal( names(values(h)), letters[1:3] )
 })
 
-context('as.list')
-test_that( 'as.list', {
-  h <- hash( a=1, b=2, c=3 )
-  li <- as.list( h )
-  expect_is( li, 'list' )
-  expect_true( length(li) == 3  )
-  expect_equal( names(li), letters[1:3] )
-  expect_equivalent( unlist(li), 1:3 )
-})
