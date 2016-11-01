@@ -45,4 +45,3 @@
 #' @exportClass hash
 
 setClass( 'hash', contains = 'environment' )
-

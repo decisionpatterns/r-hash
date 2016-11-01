@@ -40,6 +40,7 @@
 #'    
 #'   keys(h)
 #'   D
+#'   
 #' @name del
 #' @aliases delete del-methods delete-methods
 #' @rdname del
@@ -84,5 +85,3 @@ setMethod(
   signature( "ANY", "hash" ) ,
     function(x,hash) { del(x,hash) }
 )
-
-

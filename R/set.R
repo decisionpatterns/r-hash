@@ -89,9 +89,10 @@
 
       # NAMED KV PAIRS 
       #   .set( a=1, b=2, c=3 )
-        if( ! is.null( names( li ) ) ) {
+        if( ! is.null( names(li) ) ) {
             keys   <- names(li)
             values <- li 
+            if( length(values) == 1 ) values <- li[[1]] #14
         } else 
  
       # NAMED VECTOR:
@@ -112,8 +113,6 @@
 
         keys <- make.keys(keys)
 
-        # cat( length(keys), ", ", keys, "\n" )
-        # cat( length(values), ", ", values, "\n" )
 
       # UNEQUAL keys and values both greater than one
         if (
