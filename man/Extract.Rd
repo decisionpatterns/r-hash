@@ -135,8 +135,6 @@ Christopher Brown
   \code{\link{keys}} to get/set/rename keys
   \code{\link{values}} to get/set/edit values
 
-  \code{\link{set}}    to set values internal method
-  
   \code{\link{hash}}
 }
 

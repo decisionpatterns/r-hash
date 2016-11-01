@@ -37,9 +37,9 @@
 #' * a single naned vector \cr
 #' * as a list \cr
 #' 
-#' See \code{\link{.set}} for further details and how key-value vectors of
-#' unequal length are interpretted.
-#' 
+# See \code{\link{.set}} for further details and how key-value vectors of
+# unequal length are interpretted.
+# 
 #' \emph{ACCESSORS.} Hashes may be accessed via the standard R accessors \code{[}, \code{[[} and
 #' \code{\$}.  See \code{\link[hash]{Extract}} for details.
 #' 
