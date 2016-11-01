@@ -1,4 +1,7 @@
 TODO:
+
+  - fix argument order has.key(x, hash) to has_key(hash,x)
+
   - Fix behavior on values to reduce and retain class
   - implement drop argument? Is there a use case when drop would reduce the
     object to something other than a hash?
