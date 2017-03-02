@@ -23,7 +23,7 @@ test_that( "EMPTY HASH", {
 test_that( "POPULATED HASH", {
   h %>% expect_is('hash')
   h %>% length %>% expect_equal(26)
-  h %>% keys %>% expect_identical(letters)
+  h %>% keys %>% sort %>% expect_identical(letters)
 })               
 
                

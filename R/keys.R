@@ -1,11 +1,14 @@
 #' keys - get/set key(s) from a hash
 #' 
-#' Returns the key(s) from a hash
-#' 
-#' Returns the character vector containing the keys of a hash object.
+#' Returns the key(s) from a hash, unsorted by default
 #' 
 #' @param x A \code{\link{hash}} object.
 #' @param value character or object coercable to character
+#' @param sorted logical; whether the keys should be sorted 
+#'        (DEFAULT: \code{getOption('hash.sorted', FALSE)})
+#' 
+#' @details 
+#' Returns the character vector containing the keys of a hash object.
 #' 
 #' @return For \code{keys} and \code{names}, a character vector of key names
 #'   For the replacement methods \code{keys<-}, a hash object with the keys 
@@ -32,14 +35,14 @@
 #' @aliases keys keys-methods
 #' @export 
 
-setGeneric( "keys", function(x) standardGeneric("keys") )
+setGeneric( "keys", function(x, ...) standardGeneric("keys") )
 
 
 #' @rdname keys
 #' @aliases keys,hash-method
 
 setMethod( "keys" , "hash" ,
-	function(x) ls(x@.Data, all.names=T )
+	function(x, sorted=getOption('hash.sorted', FALSE) ) ls(x@.Data, all.names=T, sorted=sorted )
 )
 
 
