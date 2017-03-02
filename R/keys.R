@@ -6,9 +6,17 @@
 #' @param value character or object coercable to character
 #' @param sorted logical; whether the keys should be sorted 
 #'        (DEFAULT: \code{getOption('hash.sorted', FALSE)})
+#' @param ... Used to allow for additional arguments for keys
 #' 
 #' @details 
-#' Returns the character vector containing the keys of a hash object.
+#' Returns the character vector containing the keys of a hash object. By 
+#' default, the responses are not sorted. Set \code{sorted=TRUE} to return 
+#' keys in sort order.
+#' 
+#' \code{names} uses \code{base::names} and will always return a sorted list of
+#' names. \code{keys} should generally be used in favor of \code{names}, but 
+#' names can be useful if you want sorted names for one instance when all others
+#' don't provide a sorted list.
 #' 
 #' @return For \code{keys} and \code{names}, a character vector of key names
 #'   For the replacement methods \code{keys<-}, a hash object with the keys 
@@ -45,11 +53,11 @@ setMethod( "keys" , "hash" ,
 	function(x, sorted=getOption('hash.sorted', FALSE) ) ls(x@.Data, all.names=T, sorted=sorted )
 )
 
-
 #' @rdname keys
-#' @aliases names names.hash 
+#' @aliases names names.hash
+#' @export
 
-names.hash <- function(x) keys(x)
+setMethod( "names", "hash", function(x) base::names( x@.xData ) )
 
 
 # ----------------------------------------------------
