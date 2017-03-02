@@ -1,3 +1,16 @@
+# 2017-03-01 Vesion 3.2.0 
+
+ * `values` always returns a list. Use `unlist` to simplify (#13: Florent Angly)
+ * hash operation no longer sorts by key, providing an speed-up especially for 
+   large hashes (#15: Florent Angly)
+  
+ * `names` has been removed. Now calling names uses `base::names` by default, 
+   `keys` should be mostly used instead. It is faster and more flexible.
+  
+ * Hash key misses with `[` returns `NULL` if not found. (#1: Rohani)
+ 
+ * `values` now will always return a list. Use `unlist` to create a vector. 
+
 # 2014-11-20 Version 3.0.2 
 
 * improve and expand tests especially of all `hash` constructor methods

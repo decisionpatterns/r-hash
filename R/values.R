@@ -76,7 +76,12 @@ setMethod( 'values', 'hash',
 	function(x, keys=NULL, ... ) { 
       if( is.null(keys) ) keys <- keys(x)
       if( ! is.character(keys) ) keys <- make.keys(keys) 
-      return( sapply( keys, get, x, ... ))
+      return( 
+        structure( 
+          sapply( keys, get, x, ..., simplify=FALSE, USE.NAMES = FALSE ), 
+          names=keys 
+        )
+      )
 	}
 ) 
 

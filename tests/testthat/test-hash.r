@@ -107,7 +107,7 @@ test_that( 'character & list', {
   expect_equal( length(keys(h)), 3)
   expect_equal( length(values(h)), 3)
   expect_equal( keys(h, sorted=TRUE), letters[1:3] )
-  expect_equivalent( values(h) %>% sort, 1:3  )
-  expect_equal( names(values(h)) %>% sort, letters[1:3] )
+  expect_equivalent( values(h) %>% unlist %>% sort, 1:3  )
+  expect_equal( names(values(h)) %>% unlist %>% sort, letters[1:3] )
 })
 
