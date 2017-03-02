@@ -1,4 +1,3 @@
-# ----------------------- ACCESSOR METHODS ------------------------------
 #' Extract 
 #' 
 #' These are the hash accessor methods. They closely follow the R style. 
@@ -14,18 +13,20 @@
 #' @param value the value to set for the key-value pair
 #' @param name the key name
 #'
-#'
 #' \code{$} is a look-up operator for a single key.  The base \code{$} method
 #' are used directly on the inherited environment.  The supplied key is taken 
 #' as a string literal and is not interpreted.  The replaement form, \code{$<-} 
 #' mutates the hash in place.
 #' 
-#' \code{[[} is the look-up, extraction operator.  It returns the values of a
-#' single key. The replacement method, \code{[[<-} mutates the hash in place. 
+#' \code{[[} is the look-up, extraction operator.  It returns the value of a
+#' single key and will interpret its argument. The replacement method, 
+#' \code{[[<-} mutates the hash in place. 
 #' 
-#' \code{[} is a slice operator.  It returns a subset of key value pairs of the
-#' hash, i.e. another hash with specifies keys-value paris. Unlike the other 
-#' accessor methods, \code{[} returns a \emph{copy}.
+#' \code{[} is a slice operator. It returns a hash with the subset of key-value 
+#' pairs. Unlike the other accessor methods, \code{[} returns a \emph{copy}. 
+#' 
+#' All hash key misses return \code{NULL}. All hash key replacements with NULL
+#' delete the key-value pair from the hash.
 #' 
 #'   NAMED ACCESS/REPLACEMENT:
 #'   
@@ -108,10 +109,10 @@
 #'   h[ keys(h) ] <- list( 1:2, 1:3 )
 #'   h
 #'
-#' @name Extract      
-#' @rdname Extract
+#' @name extract      
+#' @rdname extract
 #' @docType methods
-#' @aliases Extract
+#' @aliases extract
 
 NULL
 
@@ -121,7 +122,7 @@ NULL
 ## ---------------------------------------------------------------------
 
 #' @name [,hash,ANY,missing,missing-method
-#' @rdname Extract
+#' @rdname extract
 
 
 setMethod( 
@@ -136,7 +137,8 @@ setMethod(
   ) {
     
     .h <- hash() # Will be the new hash
-    for( k in i ) assign( k, get(k,x), .h@.Data )
+    for( k in i ) 
+      assign( k, mget( x=k, envir=x@.xData, ifnotfound = list(NULL) ), .h@.Data )
     
     return(.h)
     
@@ -145,7 +147,7 @@ setMethod(
 
 
 #' @name [,hash,missing,missing,missing-method
-#' @rdname Extract
+#' @rdname extract
 
 setMethod( '[', signature( 'hash', 'missing', 'missing', 'missing' ),
   function(x,i,j, ..., drop ) {
@@ -162,7 +164,7 @@ setMethod( '[', signature( 'hash', 'missing', 'missing', 'missing' ),
 
 
 #' @name [<-,hash,ANY,missing,ANY-method
-#' @rdname Extract
+#' @rdname extract
 
 setReplaceMethod( '[', c(x ="hash", i="ANY" ,j="missing", value="ANY") ,
 	function( x, i, ...,  value ) {
@@ -174,7 +176,7 @@ setReplaceMethod( '[', c(x ="hash", i="ANY" ,j="missing", value="ANY") ,
 
 
 #' @name [<-,hash,ANY,missing,NULL-method 
-#' @rdname Extract
+#' @rdname extract
 
 setReplaceMethod( '[', c(x="hash", i="ANY", j="missing", value="NULL") ,
     function( x, i, ...,  value ) {
@@ -214,7 +216,7 @@ setReplaceMethod( '[', c(x="hash", i="ANY", j="missing", value="NULL") ,
 
 
 #' @name $<-,hash,NULL-method
-#' @rdname Extract
+#' @rdname extract
 
 setReplaceMethod( '$', c( x="hash", value="NULL"),
   function(x, name, value) {
@@ -237,7 +239,7 @@ setReplaceMethod( '$', c( x="hash", value="NULL"),
 ## ---------------------------------------------------------------------
 
 #' @name [[<-,hash,ANY,missing,ANY-method
-#' @rdname Extract 
+#' @rdname extract 
 
 setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="ANY") ,
   function(x,i,value) {
@@ -248,7 +250,7 @@ setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="ANY") ,
 
 
 #' @name [[<-,hash,ANY,missing,NULL-method
-#' @rdname Extract
+#' @rdname extract
   
 setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="NULL") ,
   function(x,i,value) {
