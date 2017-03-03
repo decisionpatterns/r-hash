@@ -7,7 +7,7 @@
 \usage{
 kv(x, ...)
 
-\method{kv}{hash}(x)
+\method{kv}{hash}(x, ...)
 }
 \arguments{
 \item{x}{object such as vector or list to separate into key value pairs}

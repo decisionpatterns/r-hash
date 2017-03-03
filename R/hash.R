@@ -41,7 +41,7 @@
 # unequal length are interpretted.
 # 
 #' \emph{ACCESSORS.} Hashes may be accessed via the standard R accessors \code{[}, \code{[[} and
-#' \code{\$}.  See \code{\link[hash]{Extract}} for details.
+#' \code{\$}.  See \code{\link[hash]{extract}} for details.
 #' 
 #' \emph{PASS-BY REFERENCE.} Environments and hashes are special objects in R because
 #' only one copy exists globally. When provided as an argument to a function, no
@@ -68,7 +68,7 @@
 #' @author Christopher Brown
 #' 
 #' @seealso 
-#'   \code{\link{Extract}}
+#'   \code{\link{extract}}
 #' 
 #' @examples
 #' 

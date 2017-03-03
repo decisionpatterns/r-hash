@@ -36,8 +36,8 @@
 kv <- function(x, ...) UseMethod('kv')
 
 #' @rdname kv
-
-kv.hash <- function(x) {
+#' @export
+kv.hash <- function(x, ...) {
   x <- values(x)
   kv =list() 
   for( i in 1:length(x) ) { 

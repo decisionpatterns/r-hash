@@ -32,7 +32,7 @@
 #' values. 
 #' 
 #' @seealso 
-#'   \code{\link[hash]{Extract}} for R-like accessors
+#'   \code{\link[hash]{extract}} for R-like accessors
 #'
 #' @examples
 #'   h <- hash( letters, 1:26 )
@@ -53,7 +53,7 @@
 #'   class( unlist(vals) )            # numeric
 #'   class( Reduce( c, vals ) )       # "POSIXct" "POSIXt" 
 #'   
-#'   vals <- values(h, simplify=FALSE )
+#'   vals <- values(h)
 #'   class(vals)            # List
 #'   class( Reduce( c, vals ) ) # "POSIXct" "POSIXt"
 #'   

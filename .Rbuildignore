@@ -8,5 +8,5 @@
 dev
 TODO
 cran-comments.md
- 
+vignettes 
 ^revdep$

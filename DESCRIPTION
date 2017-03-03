@@ -21,7 +21,10 @@ Suggests:
     magrittr (>= 1.5), 
     testthat (>= 1.0), 
     knitr (>= 1.14),
-    rmarkdown
+    rmarkdown,
+    ggplot2,
+    microbenchmark,
+    scales
 Description: A data structure similar to dictionaries in Python or hashes in 
     other languages is implemented adapted to R's accessors syntax and 
     vectorized operations. For objects of appreciable size, hashes outperform

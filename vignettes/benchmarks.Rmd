@@ -16,7 +16,6 @@ library(hash)
 
 library(magrittr)
 library(knitr)
-library(lattice)
 library(ggplot2)
 library(microbenchmark)
 library(scales)

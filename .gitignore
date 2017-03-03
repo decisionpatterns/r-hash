@@ -3,3 +3,6 @@
 .Rhistory
 .RData
 inst/doc
+vignettes/benchmarks_cache/
+vignettes/benchmarks_files/
+

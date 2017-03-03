@@ -71,11 +71,11 @@ Get/set values for a hash object
   class( unlist(vals) )            # numeric
   class( Reduce( c, vals ) )       # "POSIXct" "POSIXt" 
   
-  vals <- values(h, simplify=FALSE )
+  vals <- values(h)
   class(vals)            # List
   class( Reduce( c, vals ) ) # "POSIXct" "POSIXt"
   
 }
 \seealso{
-\code{\link[hash]{Extract}} for R-like accessors
+\code{\link[hash]{extract}} for R-like accessors
 }
