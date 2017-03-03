@@ -50,10 +50,9 @@ as:
   inverted.hash( a=1, b=1:2, c=1:3 )
   
 }
-\author{
-Christopher Brown
-}
 \seealso{
 See also \code{link{hash}} and \code{\link{make.keys}}
 }
-
+\author{
+Christopher Brown
+}

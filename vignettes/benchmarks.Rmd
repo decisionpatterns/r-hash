@@ -1,0 +1,310 @@
+---
+title: "Benchmarks"
+author: "Christopher Brown"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+
+```{r, echo=FALSE, warning=FALSE, error=FALSE, results='hide', message=FALSE}
+library(hash)
+
+library(magrittr)
+library(knitr)
+library(lattice)
+library(ggplot2)
+library(microbenchmark)
+library(scales)
+
+replications <- 10
+```
+
+## Environment 
+
+The hash version: `r packageVersion('hash')`.
+
+
+### System
+
+```{r, echo=FALSE} 
+ R.version %>% unlist() %>% as.data.frame() %>% kable()
+
+```
+
+
+## BENCHMARK: Accessing Keys
+
+Read keys from an 1,000 element hash, optionally sorting.
+
+```{r benchmark0, cache=TRUE, echo=FALSE}
+h <- hash( 1:1000, rnorm(1000) )
+
+microbenchmark( 
+   keys.sorted    = keys(h,sorted=TRUE)
+ , keys.unsorted  = keys(h,sorted=FALSE)
+ , names          = names( h@.xData )
+ , replication = replications
+) %>% summary %>% kable
+
+```
+
+
+## BENCHMARK 1: Assigining Values to Empty Environments
+
+
+```{r, cache=TRUE, echo=FALSE }
+
+size   <- 5e4   # The size of the refernece objects. 
+keys   <- as.character( sample(1:size) )  # A vector of keys
+values <- as.character( rnorm( size ) )
+
+lst <- list()
+
+env.mapply <- new.env( hash = T , parent = emptyenv() )
+env.lapply <- new.env( hash = T , parent = emptyenv() )
+env.for    <- new.env( hash = T , parent = emptyenv() )
+h          <- hash()
+```
+
+This benchmark compares methods for assigning multiple values to an empty/growing environment iterating with `for`, `lapply` or `mapply`. Perhaps somewhat surprisingly, The `for` loop is the fastest method by a considerable margin. This is used internally for setting kv pairs.
+
+
+```{r benchmark1, echo=FALSE, cache=TRUE }
+times = 5
+microbenchmark( 
+  for_loop = for( i in 1:length(keys) ) assign( keys[[i]], values[[i]], envir = env.for ) ,
+  mapply   = mapply( assign, keys, values, MoreArgs = list( envir = env.mapply ) ) ,
+  lapply   = lapply( 
+      ( 1:length(keys) ) ,                                
+      FUN = function(i) assign( keys[[i]], values[[i]], envir = env.lapply )
+    ) ,
+  times = times,
+  unit = 'ms'
+) %>% summary %>% kable
+
+
+```
+
+
+## BENCHMARK 2: Assigning Values to Existing 
+
+This benchmarks comapres the time to assign values to existing structures of various sized. 
+
+
+```{r benchmark2, cache=TRUE, echo=FALSE, fig.width=6}
+n.writes  <- 1000
+sizes = 2^(0:13)     # Elements in object
+
+bm2 <- data.frame()
+if( exists('res') ) rm(res)
+
+for( size in sizes ) {
+
+  # CREATE NAMED-LIST:
+  li<-mapply(
+          function(k,v) {
+            li<-list()
+            li[[k]]<-v
+            li
+          } ,
+          keys[1:size] ,
+          values[1:size] ,
+          USE.NAMES=F
+        )
+
+
+  # CREATE NAMED-HASH:
+  ha <- hash( keys[1:size], values[1:size] )
+  
+  # CREATE ENV
+  en <- new.env( hash=TRUE )
+  for( i in 1:size ) assign( keys[[i]], values[[i]],  en )
+
+  # CREATE A VECTOR
+  ve <-  values[1:size]
+  names(ve) <- keys[1:size]
+
+  # CREATE KEYS TO LOOK UP:
+  # kes <- keys[ round(runif(n=n.writes,min=1,max=length(keys)  )) ] 
+  # ke <- keys[ round(runif(max=size,min=1,n=slice.size )) ]       
+  
+  sample( letters, 1 )
+  ke <- sample(keys,1 ) 
+    
+ res <-
+    microbenchmark(
+      `hash`       = ha[[ke]] <- "a" ,
+      `list`       = li[[ke]] <- "a" ,
+      `vector`     = ve[[ke]] <- "a" ,
+      `env/assign` = assign( ke, "a" , en ) ,
+        unit  = "us",
+        times = n.writes 
+    ) %>% summary
+
+  res$size <- size
+  bm2<- if( nrow(bm2)==0) res else rbind( bm2, res )
+
+}
+
+
+gg <-ggplot( bm2, aes(x=size, y=median, color=expr ) ) 
+
+gg + 
+  geom_point() + geom_line() + geom_point( size=0.5, color="white") +
+  scale_x_log10("Object Size (# Elements)", labels=comma, breaks=sizes ) +
+  scale_y_continuous( "Median Time (microsecond)" )
+  
+
+
+
+```
+
+
+## BENCHMARK 3: Accessing/Reading Single Values
+
+This benchmark looks up single value in objects of increasing sizes. We can note
+two trends:
+
+1. For objects of with elements < 500-1000 elements, using a native lists or 
+factors is much faster than using a hash. Above this, number hashes far 
+outperform vectors and lists.
+
+2. The fastest retrieval method is `get` directly on the environment. This can 
+be done with hashes.
+
+
+```{r benchmark3, echo=FALSE, cache=TRUE, fig.width=6}
+times = 100
+number.of.lookups <- 1e3
+bm3 <- data.frame() 
+if( exists('res') ) rm(res)
+
+# LOOP OVER SIX ORDERS OF MAGNITUDES.
+for( size in 2^(1:13) ) {
+
+  # CREATE NAMED-LIST:
+  li<-mapply( 
+          function(k,v) {
+            li<-list()
+            li[[k]]<-v
+            li
+          } ,
+          keys[1:size] , 
+          values[1:size] ,
+          USE.NAMES=F
+        )
+  
+
+  # CREATE NAMED-HASH:
+  ha <- hash( keys[1:size], values[1:size] )
+
+  # CREATE A VECTOR
+  ve <-  values[1:size] 
+  names(ve) <- keys[1:size]
+
+
+  # CREATE KEYS TO LOOK UP:
+  ke <- keys[ round(runif(max=size,min=1,n=number.of.lookups )) ]
+  k <- sample( keys[1:size], 1 ) 
+    
+  res <-  microbenchmark( 
+    `get/env`     = get( k, ha@.xData ) ,
+    `get/hash`    = get( k, ha ) ,
+    `mget/env`    = mget(k, ha@.xData, ifnotfound = list(NULL) ) ,
+    `hash[[k]]`   = ha[[k]] ,
+    `list[[k]]`   = li[[k]] ,
+    `vector[[k]]` = ve[[k]] , 
+      times = times,
+      unit = "us"
+  ) %>% summary
+
+  res$size <- size
+  bm3 <- rbind( bm3, res )   
+
+}
+
+
+gg <- 
+  ggplot(bm3 , aes(x=size, y=jitter(median), color=expr ))
+
+ gg + geom_point() + geom_line() + geom_point( size=0.5, color="white") +
+  scale_x_log10("Object Size (# Elements)", labels=comma, breaks=sizes, minor_breaks=waiver() ) +
+  scale_y_continuous( "Median Time (microsecond)", labels=comma )
+  
+
+
+ 
+
+```
+
+
+## BENCHMARK 4: Reading Multiple Values / Slices (`[`) 
+
+Take slices of an object.  
+
+```{r benchmark4, echo=FALSE, fig.width=6 }
+times = 100
+slice.pct  <- 0.01
+n.lookups  <- 100
+bm4 <- data.frame()
+
+for( size in 2^(0:13) ) {
+
+  slice.size <- floor( size * slice.pct ) + 1
+  # cat( "\nComparing slice time for object of size", size, "with slice pct", slice.pct, "\n" )
+
+  # CREATE NAMED-LIST:
+  li<-mapply( 
+          function(k,v) {
+            li<-list()
+            li[[k]]<-v
+            li
+          } ,
+          keys[1:size] , 
+          values[1:size] ,
+          USE.NAMES=F
+        )
+  
+
+  # CREATE NAMED-HASH:
+  ha <- hash( keys[1:size], values[1:size] )
+
+  # CREATE A VECTOR
+  ve <-  values[1:size] 
+  names(ve) <- keys[1:size]
+
+  # CREATE KEYS TO LOOK UP:
+  # kes <- lapply( 1:n.lookups, function(x) keys[ round(runif(max=size,min=1,n=slice.size )) ] )
+  # ke <- keys[ round(runif(max=size,min=1,n=slice.size )) ]       
+
+  ke = sample(keys[1:size],  min(size,100) )
+
+ res <-  
+    microbenchmark( 
+      `hash`       = ha[ ke ] ,
+      # `list`     = li[ ke ] ,
+      `vector`     = ve[ ke ] ,
+      `mget/env`   = mget( ke, ha@.Data ) , 
+        times = times ,
+        unit  = "us"
+      
+    ) %>% summary
+
+  res$size <- size 
+  bm4 <- if( nrow(bm4)==0) res else rbind( bm4, res ) 
+
+}
+gg <- 
+  ggplot(bm4 , aes(x=size, y=jitter(median), color=expr ))
+
+ gg + geom_point() + geom_line() + geom_point( size=0.5, color="white") +
+  scale_x_log10("Object Size (# Elements)", labels=comma, breaks=sizes, minor_breaks=waiver() ) +
+  scale_y_continuous( "Median Time (microsecond)", labels=comma )
+  
+ 
+```

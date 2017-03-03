@@ -3,12 +3,13 @@
 \docType{methods}
 \name{del}
 \alias{del}
+\alias{delete}
+\alias{del-methods}
+\alias{delete-methods}
 \alias{del,ANY,hash-method}
 \alias{del,character,hash-method}
-\alias{del-methods}
 \alias{delete}
 \alias{delete,ANY,hash-method}
-\alias{delete-methods}
 \title{del, delete - remove key-value pair(s) from a hash}
 \usage{
 del(x, hash)
@@ -59,16 +60,15 @@ keys, use the \code{\link{clear}} method.
   D
   
 }
-\author{
-Christopher Brown
-}
 \seealso{
 \code{\link[base]{rm}} base function used by \code{del}
    \code{\link{Extract}} for R-like accessor
    \code{\link{clear}} to remove all key-values and return an empty hash
    \code{\link{hash}}
 }
+\author{
+Christopher Brown
+}
 \keyword{data}
 \keyword{manip}
 \keyword{methods}
-

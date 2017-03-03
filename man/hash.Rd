@@ -2,11 +2,11 @@
 % Please edit documentation in R/hash.R, R/length.R
 \docType{methods}
 \name{hash}
-\alias{as.list.hash}
 \alias{hash}
 \alias{is.hash}
-\alias{length}
+\alias{as.list.hash}
 \alias{length,hash-method}
+\alias{length}
 \title{hash/associative array/dictionary data structure for the R language}
 \usage{
 hash(...)
@@ -113,15 +113,14 @@ the internal environment.
   length(h) # 26
 
 }
-\author{
-Christopher Brown
-
-Christpher Brown
-}
 \seealso{
 \code{\link{Extract}}
 
 See Also \code{\link{hash}}, \code{\link{length}}
 }
-\keyword{methods}
+\author{
+Christopher Brown
 
+Christpher Brown
+}
+\keyword{methods}

@@ -36,11 +36,10 @@ that the memory from the environment is freed.
   h # An object of type 'hash' containing 0 key-value pairs.
 
 }
-\author{
-Christopher Brown
-}
 \seealso{
 \code{\link{del}} to remove specific key-values from the hash.
   \code{\link{hash}}.
 }
-
+\author{
+Christopher Brown
+}

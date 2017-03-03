@@ -30,12 +30,11 @@ logical.
     is.empty(h)    # TRUE
     
 }
-\author{
-Christopher Brown
-}
 \seealso{
 \code{\link{hash}}
   \code{\link{exists}}
   \code{\link{length}}
 }
-
+\author{
+Christopher Brown
+}

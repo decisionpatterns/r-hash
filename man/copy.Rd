@@ -33,10 +33,9 @@ Create a copy of a hash.
   h.new <- copy( h )
   
 }
-\author{
-Christopher Brown
-}
 \seealso{
 \code{\link[base]{environment}}
 }
-
+\author{
+Christopher Brown
+}

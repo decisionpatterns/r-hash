@@ -29,14 +29,13 @@ is only documented for completeness.
   make.keys( letters )
   make.keys( 1:26 ) 
 }
-\author{
-Christopher Brown
-}
 \seealso{
 \code{\link{hash}}
   \code{\link[base]{make.names}}
 }
+\author{
+Christopher Brown
+}
 \keyword{data}
 \keyword{manip}
 \keyword{methods}
-

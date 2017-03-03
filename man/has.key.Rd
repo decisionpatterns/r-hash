@@ -33,11 +33,10 @@ which keys are defined on the hash.
     all( has.key( letters, h ) ) # TRUE
     
 }
-\author{
-Christopher Brown
-}
 \seealso{
 \code{\link[base]{exists}} 
   \code{\link{hash}}
 }
-
+\author{
+Christopher Brown
+}

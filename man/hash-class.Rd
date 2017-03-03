@@ -29,6 +29,7 @@ For this reason, some of the behaviour is not as expected.
 \describe{
 \item{\code{.xData}}{an \code{\link[base]{environment}}}
 }}
+
 \examples{
   
   h <- new( "hash" )   # new empty hash
@@ -43,12 +44,11 @@ For this reason, some of the behaviour is not as expected.
   showClass("hash")
 
 }
-\author{
-Christopher Brown
-}
 \seealso{
 \link{Extract}
   \code{\link{is.hash}}
   \code{\link{as.list.hash}}
 }
-
+\author{
+Christopher Brown
+}

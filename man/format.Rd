@@ -21,4 +21,3 @@ Format a hash for printing/showing.
 \seealso{
 \code{\link{format}}
 }
-

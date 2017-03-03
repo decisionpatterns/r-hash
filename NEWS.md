@@ -1,6 +1,10 @@
 # 2017-03-01 Vesion 3.2.0 
 
- * `values` always returns a list. Use `unlist` to simplify (#13: Florent Angly)
+ * added `kv` function to iterate by key and value
+ 
+ * `values` always returns a named list. Use `unlist` to simplify 
+   (#13: Florent Angly)
+ 
  * hash operation no longer sorts by key, providing an speed-up especially for 
    large hashes (#15: Florent Angly)
   

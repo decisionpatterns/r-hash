@@ -63,7 +63,7 @@ test_that( "[", {
     expect_error( h[[letters]] )
   }
   
-  h[letters] %>% expect_equal(h)
+  h[letters] %>% expect_equivalent(h)
 })
                
 # TEST [[ <- 

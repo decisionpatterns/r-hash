@@ -32,11 +32,6 @@ performance, e.g. compared to lists with a large number of elements.
   rm(h)
 
 }
-\author{
-Christopher Brown
-
-Maintainer: Christopher Brown <chris.brown -at- decisionpatterns -dot- com>
-}
 \references{
 Some discussion can be found here:
 }
@@ -45,4 +40,8 @@ Some discussion can be found here:
   \code{\link{Extract}} and
   \code{\link{environment} }
 }
+\author{
+Christopher Brown
 
+Maintainer: Christopher Brown <chris.brown -at- decisionpatterns -dot- com>
+}

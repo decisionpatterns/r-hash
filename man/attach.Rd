@@ -4,10 +4,12 @@
 \alias{attach}
 \title{attach/detach a hash to the search path}
 \usage{
-attach(what, ...)
+attach(what, pos = 2L, ...)
 }
 \arguments{
 \item{what}{hash; hash object to attach to the search path}
+
+\item{pos}{integer where to attach the hash}
 
 \item{...}{additional arguments passed to \code{\link[base]{attach}}
 
@@ -33,4 +35,3 @@ this function is not-exported; explicit declaration is necessary
 \seealso{
 \code{\link[base]{attach}}
 }
-

@@ -1,14 +1,16 @@
 Package: hash
 Type: Package
 Title: A Hash/Dictionary/Map/Associated Array for R 
-Version: 3.1.0
-Date: 2016-11-01
-Authors@R: c( person("Christopher", "Brown", email="christopher.brown@decisionpatterns.com", role = c("aut","cre") ),
-             person(family = "Decision Patterns", role = "cph"))
-URL: 
+Version: 3.2.0
+Date: 2017-03-02
+Authors@R: c(
+    person("Christopher", "Brown", , "chris.brown@decisionpatterns.com", c("aut", "cre") ),
+    person("Decision Patterns", role = "cph")
+    )
+URL:
     https://github.com/decisionpatterns/r-hash 
     http://www.decisionpatterns.com
-BugReports: 
+BugReports:
     https://github.com/decisionpatterns/r-hash/issues
 Depends:
     R (>= 3.1.0)
@@ -18,7 +20,8 @@ Imports:
 Suggests:
     magrittr (>= 1.5), 
     testthat (>= 1.0), 
-    knitr (>= 1.14)
+    knitr (>= 1.14),
+    rmarkdown
 Description: A data structure similar to dictionaries in Python or hashes in 
     other languages is implemented adapted to R's accessors syntax and 
     vectorized operations. For objects of appreciable size, hashes outperform
@@ -27,4 +30,5 @@ Description: A data structure similar to dictionaries in Python or hashes in
 LazyLoad: yes
 License: GPL (>= 2) | file LICENSE
 VignetteBuilder: knitr
-RoxygenNote: 5.0.1.9000
+RoxygenNote: 6.0.1.9000
+Repository: CRAN

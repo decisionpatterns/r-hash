@@ -3,21 +3,23 @@
 \docType{methods}
 \name{keys}
 \alias{keys}
-\alias{keys,hash-method}
 \alias{keys-methods}
-\alias{keys<-}
-\alias{keys<-,hash,ANY-method}
-\alias{keys<-,hash,NULL-method}
-\alias{keys<--methods}
+\alias{keys,hash-method}
+\alias{names,hash-method}
 \alias{names}
 \alias{names.hash}
+\alias{keys<-}
+\alias{keys<--methods}
+\alias{keys<-,hash,ANY-method}
+\alias{keys<-,hash,ANY-method}
+\alias{keys<-,hash,NULL-method}
 \title{keys - get/set key(s) from a hash}
 \usage{
-keys(x)
+keys(x, ...)
 
-\S4method{keys}{hash}(x)
+\S4method{keys}{hash}(x, sorted = getOption("hash.sorted", FALSE))
 
-\method{names}{hash}(x)
+\S4method{names}{hash}(x)
 
 keys(x) <- value
 
@@ -30,6 +32,11 @@ keys(x) <- value
 \arguments{
 \item{x}{A \code{\link{hash}} object.}
 
+\item{...}{Used to allow for additional arguments for keys}
+
+\item{sorted}{logical; whether the keys should be sorted 
+(DEFAULT: \code{getOption('hash.sorted', FALSE)})}
+
 \item{value}{character or object coercable to character}
 }
 \value{
@@ -38,10 +45,17 @@ For \code{keys} and \code{names}, a character vector of key names
   renamed to \code{value}
 }
 \description{
-Returns the key(s) from a hash
+Returns the key(s) from a hash, unsorted by default
 }
 \details{
-Returns the character vector containing the keys of a hash object.
+Returns the character vector containing the keys of a hash object. By 
+default, the responses are not sorted. Set \code{sorted=TRUE} to return 
+keys in sort order.
+
+\code{names} uses \code{base::names} and will always return a sorted list of
+names. \code{keys} should generally be used in favor of \code{names}, but 
+names can be useful if you want sorted names for one instance when all others
+don't provide a sorted list.
 }
 \examples{
 
@@ -54,11 +68,10 @@ Returns the character vector containing the keys of a hash object.
   # keys( h ) <- rev( keys(h) ) 
 
 }
-\author{
-Christopher Brown
-}
 \seealso{
 \code{\link{setkeys}} : rename specific hash keys. 
   \code{\link{hash}} : hash object
 }
-
+\author{
+Christopher Brown
+}

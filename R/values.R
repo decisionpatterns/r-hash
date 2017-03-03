@@ -3,26 +3,18 @@
 #' Get/set values for a hash object
 #' 
 #' @param x hash object
-#' @param keys to get or set
+#' @param keys character; names of keys to get 
 #' @param value to be set 
 #' @param ... additional arguments passed to sapply
 #' 
-#' The \code{values} method returns the values from a hash. It is similar to
-#' \code{ h[[ keys(h) ]] } except that a named vector or list is returned
-#' instead of a hash.  : By default, the returned values are simplified by
-#' coercing to a vector or matrix if possible; elements are named after the
-#' corresponding key. If the values are of different types or of a complex
-#' class than a named list is returned.  Argument \code{simplify} can be used
-#' to control this behavior.  The default is to simplify the results. 
+#' The \code{values} method returns a named-list of key value pairs from a hash.
+#' If a hash is desired, use the hash slice method, \code{h[x]}. 
 #' 
-#' Because of the way that R works this might produce some unexpected behavior
-#' when objects are being returned. R sometimes simplifies these to numeric
-#' classes causing the original class to be lost. In these cases, set 
-#' \code{simplify} to \code{FALSE}. This will return a list of values that can
-#' be manipulated normally, e.g. with \code{Reduce} or \code{c}.  See examples
-#' for how this works with dates. This will likely be fixed in a future version. 
+#' List elements are named after the corresponding key. In previous versions,
+#' the return was simplified. This is no longer the case. Users should 
+#' simplify arguments if needed using \code{unlist} or similar. See examples.
 #' 
-#' If a character vector of \code{keys} is provided, only these keys are
+#' If argument \code{keys} is provided, only these keys are
 #' returned. This also allows for returning values mulitple times as in:
 #' 
 #' \code{ values(h, keys=c( 'a','a','b' ) ) }
@@ -34,14 +26,17 @@
 #' those associated with the supplied \code{keys}.  Use of the accessor '[' is
 #' almost always preferred.
 #' 
+#' @return 
+#' 
+#' A named list. Names are those of the keys, values are the associated hash 
+#' values. 
+#' 
 #' @seealso 
 #'   \code{\link[hash]{Extract}} for R-like accessors
 #'
 #' @examples
 #'   h <- hash( letters, 1:26 )
 #'   values(h)  # 1:26
-#'   values(h, simplify = FALSE )
-#'   values(h, USE.NAMES = FALSE )
 #' 
 #'   h <- hash( 1:26, letters )
 #'   values(h) 
@@ -55,8 +50,9 @@
 #'   h <- hash( c('a','b'), Sys.time() )
 #'   class(h$a)             # "POSIXct" "POSIXt"
 #'   vals <- values( h )    
-#'   class(vals)            # Numeric
-#'  
+#'   class( unlist(vals) )            # numeric
+#'   class( Reduce( c, vals ) )       # "POSIXct" "POSIXt" 
+#'   
 #'   vals <- values(h, simplify=FALSE )
 #'   class(vals)            # List
 #'   class( Reduce( c, vals ) ) # "POSIXct" "POSIXt"

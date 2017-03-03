@@ -1,9 +1,11 @@
 library(hash)
 library(testthat)
 
-context('clear')
 
 test_that( "clear", {
+  context('clear')
+  if( exists('h') ) rm(h)
+  
   h <- hash( letters, 1 )
 
   h %>% expect_is("hash")

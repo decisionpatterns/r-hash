@@ -51,4 +51,3 @@ setkeys is modeled after \code{setnames} in the data.table package.
 \code{\link{keys}} 
   \code{\link{hash}}
 }
-
