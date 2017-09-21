@@ -4,8 +4,11 @@
 
 [![CRAN](http://www.r-pkg.org/badges/version/hash)](https://cran.rstudio.com/web/packages/hash/index.html) 
 [![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) 
-[![Downloads](http://cranlogs.r-pkg.org/badges/hash?color=brightgreen)](http://www.r-pkg.org/pkg/hash)
- 
+[![Downloads](https://cranlogs.r-pkg.org/badges/hash?color=brightgreen)](https://www.r-pkg.org/pkg/hash)
+[![](http://cranlogs.r-pkg.org/badges/grand-total/hash)](http://cran.rstudio.com/web/packages/hash/index.html)
+[![software impact](http://depsy.org/api/package/r/hash/badge.svg)](http://depsy.org/package/r/hash)
+
+
 
 The *hash* package provides a fully-functional hash/dictionaryfor the R language. It provides richer features and finer control of hash behavior than using native R structures like list or environments and has as a user-friendly interface. Performance-wise it has similar and sometimes better performance than these structures especially for larger objects.
 
