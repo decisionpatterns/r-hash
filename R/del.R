@@ -45,6 +45,7 @@
 #' @aliases delete del-methods delete-methods
 #' @rdname del
 #' @docType methods
+#' @import methods
 #' @export
 
 setGeneric( "del", function( x, hash ) { standardGeneric("del") } )
@@ -79,9 +80,10 @@ setGeneric( "delete", function( x, hash ) { standardGeneric("delete") } )
 
 #' @rdname del
 #' @aliases delete,ANY,hash-method
+#' @import methods
 
 setMethod(
   "delete",
-  signature( "ANY", "hash" ) ,
+  methods::signature( "ANY", "hash" ) ,
     function(x,hash) { del(x,hash) }
 )

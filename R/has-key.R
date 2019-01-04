@@ -26,8 +26,10 @@
 #' @name has.key
 #' @rdname has.key
 #' @docType methods
-#' @aliases has.key     
+#' @aliases has.key   
+#' @import methods  
 #' @export
+
 setGeneric( 
     "has.key", 
     function( key, hash, ... ) standardGeneric( "has.key" ) 
@@ -38,7 +40,7 @@ setGeneric(
 #' @aliases has.key,ANY,hash-method
 setMethod( 
     "has.key" ,
-    signature( "ANY", "hash" ) ,
+    methods::signature( "ANY", "hash" ) ,
     function( key, hash, ... ) {
       sapply( key, exists, hash@.Data, inherits=FALSE )
     }

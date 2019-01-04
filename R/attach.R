@@ -2,13 +2,13 @@
 #' 
 #' @param what hash; hash object to attach to the search path 
 #' @param pos integer where to attach the hash
-#' @param ... additional arguments passed to \code{\link[base]{attach}}
+#' @param ... additional arguments passed to [base:attach()]
 #' 
 #' \code{attach} attached the environment part of a hash to the search path. 
 #' The keys then become directly accessible. 
 #' 
 #' @seealso 
-#'   \code{\link[base]{attach}}
+#'   [base:attach()]
 #'   
 #' @examples
 #'   h <- hash( a=1, b=2, c=3 )
@@ -23,7 +23,6 @@
 #'   this function is not-exported; explicit declaration is necessary
 
  attach <- function( what, pos=2L, ... ) { 
-   # browser()
    nm <- deparse(substitute(what))
    base::attach( what@.xData, name = nm, ... )
    # what@.xData <- as.environment(pos)
