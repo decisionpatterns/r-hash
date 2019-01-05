@@ -18,7 +18,7 @@
 #' Maintainer: Christopher Brown <chris.brown -at- decisionpatterns -dot- com>
 #' @seealso 
 #'   \code{\link{hash} }, 
-#'   \code{\link{Extract}} and
+#'   [Extract()] and
 #'   \code{\link{environment} }
 #'   
 #' @references

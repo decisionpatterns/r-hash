@@ -1,10 +1,10 @@
-library(hash)
-library(testthat)
-
+# test-clear.r
 
 test_that( "clear", {
+  
   context('clear')
-  if( exists('h') ) rm(h)
+  
+  # if( exists('h') ) rm(h)
   
   h <- hash( letters, 1 )
 
@@ -16,4 +16,5 @@ test_that( "clear", {
 
   rm(h)
   exists('h') %>% expect_false()
+  
 })

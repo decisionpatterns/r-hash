@@ -97,7 +97,7 @@ This benchmarks comapres the time to assign values to existing structures of var
 
 ```{r benchmark2, cache=TRUE, echo=FALSE, fig.width=6}
 n.writes  <- 1000
-sizes = 2^(0:13)     # Elements in object
+sizes = 2^(5:13)     # Elements in object
 
 bm2 <- data.frame()
 if( exists('res') ) rm(res)
@@ -182,9 +182,8 @@ times = 100
 number.of.lookups <- 1e3
 bm3 <- data.frame() 
 if( exists('res') ) rm(res)
-
 # LOOP OVER SIX ORDERS OF MAGNITUDES.
-for( size in 2^(1:13) ) {
+for( size in 2^(5:13) ) {
 
   # CREATE NAMED-LIST:
   li<-mapply( 
@@ -252,7 +251,7 @@ slice.pct  <- 0.01
 n.lookups  <- 100
 bm4 <- data.frame()
 
-for( size in 2^(0:13) ) {
+for( size in 2^(5:13) ) {
 
   slice.size <- floor( size * slice.pct ) + 1
   # cat( "\nComparing slice time for object of size", size, "with slice pct", slice.pct, "\n" )

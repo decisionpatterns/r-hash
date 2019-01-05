@@ -1,23 +1,23 @@
-#' del, delete - remove key-value pair(s) from a hash
+#' Remove key-value pair(s) from a hash
 #' 
 #' Removes key-value pair(s) from a hash by name of the object. There are also 
-#' R-like methods described in \code{link{Extract}}. To delete all 
-#' keys, use the \code{\link{clear}} method.
+#' R-like methods described in [Extract]. To delete all keys, use  
+#' [clear()].
 #' 
 #' @param x An object that will be coerced to valid key(s) to be removed from
-#' the hash.  \code{x} will be coerced to a valid hash keys using
-#' \code{\link{make.keys}}
-#' @param hash A \code{\link{hash}} object
+#' the hash.  `x` will be coerced to a valid hash keys using
+#' [make_keys()]
+#' @param hash A [hash()] object
 #' @return None. This method exists solely for the side-effects of removing
 #' items from the hash.
 #' 
 #' @author Christopher Brown
 #' 
 #' @seealso
-#'    \code{\link[base]{rm}} base function used by \code{del}
-#'    \code{\link{Extract}} for R-like accessor
-#'    \code{\link{clear}} to remove all key-values and return an empty hash
-#'    \code{\link{hash}}
+#'   - [base::rm()] base function used by `del`
+#'   - [Extract] for R-like accessor
+#'   - [clear()] to remove all key-values and return an empty hash
+#'   - [hash()]
 #'  
 #' @keywords methods data manip
 #' @examples
@@ -45,6 +45,7 @@
 #' @aliases delete del-methods delete-methods
 #' @rdname del
 #' @docType methods
+#' @import methods
 #' @export
 
 setGeneric( "del", function( x, hash ) { standardGeneric("del") } )
@@ -56,7 +57,7 @@ setGeneric( "del", function( x, hash ) { standardGeneric("del") } )
 setMethod( 
 	"del" , c( "ANY", "hash" ) ,
 	function ( x, hash ) 
-	  rm( list=make.keys(x), envir=hash@.Data )
+	  rm( list=make_keys(x), envir=hash@.Data )
 )
 
 
@@ -79,9 +80,10 @@ setGeneric( "delete", function( x, hash ) { standardGeneric("delete") } )
 
 #' @rdname del
 #' @aliases delete,ANY,hash-method
+#' @import methods
 
 setMethod(
   "delete",
-  signature( "ANY", "hash" ) ,
+  methods::signature( "ANY", "hash" ) ,
     function(x,hash) { del(x,hash) }
 )

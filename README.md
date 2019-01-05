@@ -2,8 +2,8 @@
 
 ## hash/dictionary/maps in R
 
-[![CRAN](http://www.r-pkg.org/badges/version/hash)](https://cran.rstudio.com/web/packages/hash/index.html) 
-[![License](http://img.shields.io/badge/license-GPL%20%28%3E=%202%29-brightgreen.svg?style=flat)](http://www.gnu.org/licenses/gpl-2.0.html) 
+[![CRAN](https://www.r-pkg.org/badges/version/hash)](https://cran.rstudio.com/web/packages/hash/index.html) 
+[![License](https://img.shields.io/badge/license-GPL%20%28%3E=%203%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-3.0.html) 
 [![Downloads](https://cranlogs.r-pkg.org/badges/hash?color=brightgreen)](https://www.r-pkg.org/pkg/hash)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/hash)](http://cran.rstudio.com/web/packages/hash/index.html)
 [![software impact](http://depsy.org/api/package/r/hash/badge.svg)](http://depsy.org/package/r/hash)

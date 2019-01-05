@@ -15,16 +15,16 @@ kv(x, ...)
 \item{...}{additional arguments}
 }
 \value{
-A named list of list; each element of \code{x} becomes a one element list 
+A named list of list; each element of \code{x} becomes a one element list
 with elements \code{k} and \code{v} representing the keys and values
 }
 \description{
-Create a list with \code{k} and \code{v} elements that is useful for 
+Create a list with \code{k} and \code{v} elements that is useful for
 explicit iteration
 }
 \details{
-No magic here, just something simple to convert \code{x} into a list of 
-lists. Each element of \code{x} is broken into a list with elements \code{k} 
+No magic here, just something simple to convert \code{x} into a list of
+lists. Each element of \code{x} is broken into a list with elements \code{k}
 (key) and \code{v} (value). See examples.
 
 For many cases, key-value iteration can be done with \code{*apply} or
@@ -41,6 +41,8 @@ objects.
 
 }
 \references{
-* \url{http://stackoverflow.com/questions/18572921/for-loop-in-r-with-key-value]} \cr
-* \url{http://stackoverflow.com/questions/4500106/iterate-over-key-value-pair-from-a-list]} \cr
+\itemize{
+\item \url{http://stackoverflow.com/questions/18572921/for-loop-in-r-with-key-value]} \cr
+\item \url{http://stackoverflow.com/questions/4500106/iterate-over-key-value-pair-from-a-list]} \cr
+}
 }

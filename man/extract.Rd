@@ -27,13 +27,13 @@
 \S4method{[[}{hash,ANY,missing,`NULL`}(x, i) <- value
 }
 \arguments{
-\item{x}{\code{\link{hash}} object}
+\item{x}{\code{\link[=hash]{hash()}} object}
 
 \item{i}{keys to get or set}
 
 \item{j}{unused; retained to be compatoble with base package}
 
-\item{...}{Arguments passed to additional methods \code{\link{sapply}}}
+\item{...}{Arguments passed to additional methods \code{\link[=sapply]{sapply()}}}
 
 \item{drop}{unused; retained to be compatible with base package}
 
@@ -42,48 +42,25 @@
 \item{name}{the key name
 
 \code{$} is a look-up operator for a single key.  The base \code{$} method
-are used directly on the inherited environment.  The supplied key is taken 
-as a string literal and is not interpreted.  The replaement form, \code{$<-} 
+are used directly on the inherited environment.  The supplied key is taken
+as a string literal and is not interpreted.  The replaement form, \code{$<-}
 mutates the hash in place.
 
 \code{[[} is the look-up, extraction operator.  It returns the value of a
-single key and will interpret its argument. The replacement method, 
-\code{[[<-} mutates the hash in place. 
+single key and will interpret its argument. The replacement method,
+\code{[[<-} mutates the hash in place.
 
-\code{[} is a slice operator. It returns a hash with the subset of key-value 
-pairs. Unlike the other accessor methods, \code{[} returns a \emph{copy}. 
+\code{[} is a slice operator. It returns a hash with the subset of key-value
+pairs. Unlike the other accessor methods, \code{[} returns a \emph{copy}.
 
 All hash key misses return \code{NULL}. All hash key replacements with NULL
 delete the key-value pair from the hash.
 
-  NAMED ACCESS/REPLACEMENT:
-  
-  h$x             : returns value of key \code{x}; 
-  h$x <- value    : sets key \code{x} to \code{value}; 
-  h$x <- NULL     : deletes key-value pair \code{x}
-   
-   
-  INTERPRETED ACCES/REPLACEMENT:
-    
-  h[[x]]          : returns value of key \code{x}; \code{x} is interpreted.
-  h[[x]] <- value : sets the values of key \code{x}; \code{x} is interpreted.
-  h[[x]] <- NULL  : deletes key-value pair \code{x}; \code{x} is interpreted.  
-  
-  
-  HASH SLICING:
-  h[]             : returns a copy of h, same as \code{copy(h)}
-  h[x]            : a hash slice of keys 
-  
-  h[] <- value    : error, undefined key
-  h[x] <- value   : set values for keys \code{x} to \code{value}(s)
-  h[x] <- NULL    : delete keys \code{x}
-  
-  
-\code{$} and \code{[[} return the value for the supplied argument. If 
+\code{$} and \code{[[} return the value for the supplied argument. If
 \code{i} is not a key of \code{x}, \code{NULL} is returned with a warning.
 
-\code{[} returns a hash slice, a subhash copy \code{x} with only the keys 
-\code{i} defined. 
+\code{[} returns a hash slice, a subhash copy \code{x} with only the keys
+\code{i} defined.
 
 See details above for the complete explanation.}
 }
@@ -128,13 +105,13 @@ These are the hash accessor methods. They closely follow the R style.
 
 }
 \seealso{
-\code{\link{del}} for removing keys
-  \code{\link{clear}} for removing all keys
-  
-  \code{\link{keys}} to get/set/rename keys
-  \code{\link{values}} to get/set/edit values
+\code{\link[=del]{del()}} for removing keys
+\code{\link[=clear]{clear()}} for removing all keys
 
-  \code{\link{hash}}
+\code{\link[=keys]{keys()}} to get/set/rename keys
+\code{\link[=values]{values()}} to get/set/edit values
+
+\code{\link[=hash]{hash()}}
 }
 \author{
 Christopher Brown

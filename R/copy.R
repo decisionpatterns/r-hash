@@ -1,27 +1,32 @@
 #' copy 
 #' 
-#' Create a copy of a hash. 
+#' Create a *copy* of a hash. 
 #'
 #' @param x hash
 #' @param ... additional arguments
 #'       
-#' Creatinga copy using the assingment operator, \code{<-}, does not work as 
+#' Creatinga copy using the assingment operator, `<-`, does not work as 
 #' expected, since hashes are based on environments and environments are 
 #' reference objects in R.  The assignment operator consequently creates a 
-#' linked copy the original hash and not an independent copy.  The \code{copy} 
+#' linked copy the original hash and not an independent copy.  The `copy` 
 #' method provides an identical unlinked copy of the hash.
 #' 
-#' @return hash, copy of hash \code{x}
+#' @return hash, copy of hash `x`
 #' 
 #' @author Christopher Brown
 #' 
 #' @seealso 
-#'   \code{\link[base]{environment}}
+#'   [base::environment()]
 #' 
 #' @examples
-#' 
 #'   h <- hash( a=1, b=2 )
-#'   h.new <- copy( h )
+#'   g <- h
+#'   g$a <- "foo"
+#'   h$a     # "foo" 
+#'   
+#'   h_new <- copy( h )
+#'   h_new$a <- "bar"
+#'   h$a     # still "foo"
 #'   
 #' @name copy
 #' @rdname copy
@@ -44,4 +49,3 @@ setMethod( 'copy', 'hash',
     }
   }
 )
-      

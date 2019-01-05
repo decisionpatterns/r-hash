@@ -5,20 +5,27 @@ library(testthat)
 
 context( '.set')
 
-library(hash)
 h <- hash()
 
 test_that( ".set", {
   
   # SET: key-value pairs
   .set( h, "a", 1:2 ) 
+  expect_equal( h[["a"]], 1:2 )
+  
   .set( h, letters, 1:26  )
+  expect_equal( h[["a"]], 1 )
+  
   .set( h, 1:5, 1:5 ) 
+  expect_equal( h[["1"]], 1  )
+  
   .set( h, letters, 12  )
+  expect_equal( h[["a"]], 12  )
   
   # SET: key-hash pair added in version 1.0.4
   .set( h, "ha", hash( a=1, b=2 ) )
   class( h[["ha"]] ) == "hash"
+  
   
   
   # SET: data.frame

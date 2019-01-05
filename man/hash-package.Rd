@@ -36,9 +36,9 @@ performance, e.g. compared to lists with a large number of elements.
 Some discussion can be found here:
 }
 \seealso{
-\code{\link{hash} }, 
-  \code{\link{Extract}} and
-  \code{\link{environment} }
+\code{\link{hash} },
+\code{\link[=Extract]{Extract()}} and
+\code{\link{environment} }
 }
 \author{
 Christopher Brown

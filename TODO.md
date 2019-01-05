@@ -1,8 +1,8 @@
 TODO:
 
-  - fix argument order has.key(x, hash) to has_key(hash,x)
+  - [] fix argument order has.key(x, hash) to has_key(hash,x)
 
-  - Fix behavior on values to reduce and retain class
+  - [] Fix behavior on values to reduce and retain class
   - implement drop argument? Is there a use case when drop would reduce the
     object to something other than a hash?
 
@@ -18,11 +18,14 @@ TODO:
     hash object?
 
 
-  - Increase perfomance of `[` and `hash` methods
+  - [x] Increase perfomance of `[` and `hash` methods
 
-  - Be able to create a loop that assigns both key and value, e.g.:
+  - [x] Be able to create a loop that assigns both key and value, e.g.:
     for( k,v in ha ) ...
     - use itertools to iterate over keys and values
+
+
+## Defaults
 
   - (LOW PRIORITY) default MISSING behavior should be customizable at the hash
     instance level.
@@ -47,21 +50,20 @@ TODO:
       but this sets the value of the Hash to NULL.  Setting the value to NULL
       is equal to deleting the key.  h$key <- NULL deletes the key.  
 
-  - Handle any type for a key, especially integers.
-    - Keep track of the type of the key: hash@key.class                          
-  - Method to coerce value to key
+  - [x] Handle any type for a key, especially integers.
+  
+  - [?] Keep track of the type of the key: `hash@key.class`
+    Asking for `keys(h)` would return the original type via coercion.
+
+  - [x] Method to coerce value to key
       even through the make.key or make.name functions.
       ? Do we allow mixing of types ? :: NO
       
-    - See also IxHash TODO below.
 
-  - IxHash : Indexed Hash.  Allow access by integer position?
+  - [?] IxHash : Indexed Hash.  Allow access by integer position?
       There becomes a problem of keeping track of replacements.
 
-  - Implement Judy Hash?
-
-  - Is there a abstract version of the hash where keys can contain 
-    muliple values?
+  - [ ] Keys can have muliple values / be recursive?
      how would this be implemented as an md5hash of the args?
      h[[ vector ]] <- values ?  
      h[[ paste( as.character( vector ) ) ]] <- value
@@ -71,12 +73,12 @@ TODO:
   - Coersion functions 
     - as.vector, 
     - pairlist, 
-    - as.data.frame, 
-    x as.environment, 
-    x as.list
+    - [x] as.data.frame, 
+    - [x] as.environment, 
+    - [x] as.list
+    
   - other coercions : 
        as.environment,  not possible without clobbering base h@env anyhow 
-       as.data.frame,   yes
        as.vector ,      yes
       
   - Implement clear as initializing of hash rather than rm

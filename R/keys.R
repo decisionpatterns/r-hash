@@ -2,31 +2,31 @@
 #' 
 #' Returns the key(s) from a hash, unsorted by default
 #' 
-#' @param x A \code{\link{hash}} object.
+#' @param x A [hash()] object.
 #' @param value character or object coercable to character
 #' @param sorted logical; whether the keys should be sorted 
-#'        (DEFAULT: \code{getOption('hash.sorted', FALSE)})
+#'        (DEFAULT: `getOption('hash.sorted', FALSE)`)
 #' @param ... Used to allow for additional arguments for keys
 #' 
 #' @details 
 #' Returns the character vector containing the keys of a hash object. By 
-#' default, the responses are not sorted. Set \code{sorted=TRUE} to return 
+#' default, the responses are not sorted. Set `sorted=TRUE` to return 
 #' keys in sort order.
 #' 
-#' \code{names} uses \code{base::names} and will always return a sorted list of
-#' names. \code{keys} should generally be used in favor of \code{names}, but 
+#' `names` uses `base::names` and will always return a sorted list of
+#' names. `keys` should generally be used in favor of `names`, but 
 #' names can be useful if you want sorted names for one instance when all others
 #' don't provide a sorted list.
 #' 
-#' @return For \code{keys} and \code{names}, a character vector of key names
-#'   For the replacement methods \code{keys<-}, a hash object with the keys 
-#'   renamed to \code{value}
+#' @return For `keys` and `names`, a character vector of key names
+#'   For the replacement methods `keys<-`, a hash object with the keys 
+#'   renamed to `value`
 #'    
 #' @author Christopher Brown
 #' 
 #' @seealso
-#'   \code{\link{setkeys}} : rename specific hash keys. 
-#'   \code{\link{hash}} : hash object
+#'   - [setkeys()] : rename specific hash keys. 
+#'   - [hash()] : hash object
 #'   
 #' @examples
 #' 
@@ -76,7 +76,7 @@ setGeneric( "keys<-", function(x,value) standardGeneric( "keys<-") )
 setReplaceMethod( "keys", c('hash','ANY'), 
   function( x, value) { 
     value <- as.character(value)
-    return( setkeys(x, keys(x), value ) )
+    setkeys(x, keys(x), value ) 
   }
 )  
 
@@ -87,7 +87,7 @@ setReplaceMethod( "keys", c('hash','ANY'),
 setReplaceMethod( "keys", c('hash','ANY'), 
   function( x, value) { 
     value <- as.character(value)
-    return( setkeys(x, keys(x), value ) )
+    setkeys(x, keys(x), value ) 
   }
 ) 
 

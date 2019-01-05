@@ -9,13 +9,13 @@
 #' 
 #' Returns the number of items in a hash
 #' 
-#' Return the number of items in the hash by calling \code{\link{length}} on
+#' Return the number of items in the hash by calling [length()] on
 #' the internal environment.
 #' 
 #' @aliases length 
 #' @return integer Number of items in the hash.
 #' @author Christpher Brown
-#' @seealso See Also \code{\link{hash}}, \code{\link{length}}
+#' @seealso See Also [hash()], [length()]
 #' @keywords methods
 #' @examples
 #' 

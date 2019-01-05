@@ -1,8 +1,8 @@
 Package: hash
 Type: Package
 Title: A Hash/Dictionary/Map/Associated Array for R 
-Version: 3.2.0
-Date: 2017-03-02
+Version: 3.3.0
+Date: 2019-01-05
 Authors@R: c(
     person("Christopher", "Brown", , "chris.brown@decisionpatterns.com", c("aut", "cre") ),
     person("Decision Patterns", role = "cph")
@@ -15,7 +15,7 @@ BugReports:
 Depends:
     R (>= 3.1.0)
 Imports:
-    methods,
+    methods (>= 3.5.0),
     utils
 Suggests:
     magrittr (>= 1.5), 
@@ -31,7 +31,9 @@ Description: A data structure similar to dictionaries in Python or hashes in
     native named lists and vectors. A comprehensive set of functions,
     methods and objects make hashes easy-to-use.
 LazyLoad: yes
-License: GPL (>= 2) | file LICENSE
+License: GPL (>= 3) | file LICENSE
 VignetteBuilder: knitr
-RoxygenNote: 6.0.1.9000
+RoxygenNote: 6.1.1
+Encoding: UTF-8
 Repository: CRAN
+Roxygen: list(markdown = TRUE)

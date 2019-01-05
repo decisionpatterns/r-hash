@@ -5,7 +5,6 @@
 \alias{values}
 \alias{values,hash-method}
 \alias{values<-}
-\alias{values<-,hash,ANY-mehtod}
 \alias{values<-,hash-method}
 \title{values}
 \usage{
@@ -20,19 +19,19 @@ values(x, ...) <- value
 \arguments{
 \item{x}{hash object}
 
-\item{...}{additional arguments passed to sapply
+\item{...}{Unused.
 
 The \code{values} method returns a named-list of key value pairs from a hash.
-If a hash is desired, use the hash slice method, \code{h[x]}. 
+If a hash is desired, use the hash slice method, \code{h[x]}.
 
 List elements are named after the corresponding key. In previous versions,
-the return was simplified. This is no longer the case. Users should 
+the return was simplified. This is no longer the case. Users should
 simplify arguments if needed using \code{unlist} or similar. See examples.
 
 If argument \code{keys} is provided, only these keys are
 returned. This also allows for returning values mulitple times as in:
 
-\code{ values(h, keys=c( 'a','a','b' ) ) }
+\code{values(h, keys=c( 'a','a','b' ) )}
 
 This is now the preferred method for returning multiple values for the same
 key.
@@ -46,7 +45,7 @@ almost always preferred.}
 \item{value}{to be set}
 }
 \value{
-A named list. Names are those of the keys, values are the associated hash 
+A named list. Names are those of the keys, values are the associated hash
 values.
 }
 \description{
@@ -77,5 +76,7 @@ Get/set values for a hash object
   
 }
 \seealso{
-\code{\link[hash]{extract}} for R-like accessors
+\itemize{
+\item \link{extract} for R-like accessors
+}
 }

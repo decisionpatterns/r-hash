@@ -19,5 +19,5 @@
 Format a hash for printing/showing.
 }
 \seealso{
-\code{\link{format}}
+\code{\link[=format]{format()}}
 }

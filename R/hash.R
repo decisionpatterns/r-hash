@@ -2,13 +2,13 @@
 #' 
 #' Functions for creating and working with hash objects: 
 #' 
-#' \code{hash} Class constructor 
+#' `hash` Class constructor 
 #' 
-#' \code{is.hash} test if object is of class "hash"
+#' `is.hash` test if object is of class "hash"
 #' 
-#' \code{as.list}
+#' `as.list`
 #' 
-#' \code{as.list.hash} convert a hash object to a list
+#' `as.list.hash` convert a hash object to a list
 #' 
 #' @param x a hash object.
 #' 
@@ -17,21 +17,21 @@
 #' 
 #' @param ...  Additional arguments passed to the function
 #' #' HASH KEYS must be a valid character value and may not be the empty string
-#' \code{""}.
+#' `""`.
 #'  
 #' 
 #' @details
 #' 
-#' \emph{KEYS} must be a valid R name, must be a character vector and must not 
-#' be the empty string, \code{""}. When supplied by the used methods will try to 
-#' coerce the keys to valid names using \code{\link{make.keys}}
+#' *KEYS* must be a valid R name, must be a character vector and must not 
+#' be the empty string, `""`. When supplied by the used methods will try to 
+#' coerce the keys to valid names using [make_keys()]
 #' 
-#' \emph{VALUES} are restricted to any valid R objects.
+#' *VALUES* are restricted to any valid R objects.
 #' HASH VALUES can be any R value, vector or object.
 #' 
 #' \emph{code{hash}}  returns a hash object.  Key-value pairs may be specified 
 #' as: \cr
-#' * explicitly named arguments \code{keys} and \code{values} \cr
+#' * explicitly named arguments `keys` and `values` \cr
 #' * two unnamed objects of equal length as a set of key-value pairs \cr
 #' * key=value pairs \cr
 #' * a single naned vector \cr
@@ -40,15 +40,15 @@
 # See \code{\link{.set}} for further details and how key-value vectors of
 # unequal length are interpretted.
 # 
-#' \emph{ACCESSORS.} Hashes may be accessed via the standard R accessors \code{[}, \code{[[} and
-#' \code{\$}.  See \code{\link[hash]{extract}} for details.
+#' *ACCESSORS.* Hashes may be accessed via the standard R accessors `[`, `[[` and
+#' `\$`.  See [hash::extract()] for details.
 #' 
-#' \emph{PASS-BY REFERENCE.} Environments and hashes are special objects in R because
+#' *PASS-BY REFERENCE.* Environments and hashes are special objects in R because
 #' only one copy exists globally. When provided as an argument to a function, no
 #' local copy is made. When passes to functions, those functions can change the
 #' value of the hash. This is not typical of R.
 #' 
-#' \emph{PERFORMANCE.}  Hashes are based on R's native environments and are designed
+#' *PERFORMANCE.*  Hashes are based on R's native environments and are designed
 #' to be exceedingly fast using the environments internal hash table.  For
 #' small data structures, a list will out-perform a hash in nearly every case.
 #' For larger data structure, i.e. > 500 key value pair the performance of the
@@ -57,18 +57,18 @@
 #' 
 #' 
 #' @return 
-#'    \code{hash} hash object
+#'    `hash` hash object
 #'    
-#'    \code{is.hash} logical value indicating if the argument is a hash.
+#'    `is.hash` logical value indicating if the argument is a hash.
 #'    
-#'    \code{as.list} list conversion from hash
+#'    `as.list` list conversion from hash
 #'    
-#'    \code{length} integer; number of key-value pairs in the hash
+#'    `length` integer; number of key-value pairs in the hash
 #' 
 #' @author Christopher Brown
 #' 
 #' @seealso 
-#'   \code{\link{extract}}
+#'   [extract()]
 #' 
 #' @examples
 #' 
@@ -92,6 +92,7 @@
 #' 
 #' @rdname hash
 #' @aliases hash 
+#' @importFrom methods new
 #' @export hash
 
 hash <- function( ... ) {
@@ -116,7 +117,7 @@ hash <- function( ... ) {
     }
   }
 
-  return(h)
+  h
 
 }
 	
@@ -127,6 +128,7 @@ hash <- function( ... ) {
 
 #' @aliases is.hash
 #' @rdname  hash
+#' @importFrom methods is
 #' @export is.hash
 
 is.hash <- function(x) is( x, "hash" )

@@ -10,7 +10,12 @@ vignette: >
 ---
 
 
-The *hash* package provides a fully-functional hash/dictionaryfor the R language. It provides richer features and finer control of hash behavior than using native R structures like list or environments and has as a user-friendly interface. Performance-wise it has similar and sometimes better performance than these structures. 
+The *hash* package provides a fully-functional hash/dictionary for R.  It has 
+richer features and finer control than using native R structures like lists or 
+environments and has as a user-friendly interface. 
+
+Performance-wise it has similar and sometimes better performance than these 
+structures. 
 
 
 ## Installation
@@ -46,6 +51,32 @@ Development Version:
     # Slice
     h[ c('a','c') ]
     
+## Accessors 
+
+    ## NAMED ACCESS/REPLACEMENT:
+     
+     h$x             : returns value of key `x`; 
+     h$x <- value    : sets key `x` to value; 
+     h$x <- NULL     : deletes key-value pair `x`
+      
+      
+    ## INTERPRETED ACCES/REPLACEMENT:
+       
+     h[[x]]          : returns value of key x; `x` is interpreted.
+     h[[x]] <- value : sets the values of key `x`; `x` is interpreted.
+     h[[x]] <- NULL  : deletes key-value pair `x`; `x` is interpreted.  
+     
+     
+    ## HASH SLICING:
+    
+     h[]             : returns a copy of h, same as `copy(h)`
+     h[x]            : a hash slice of keys 
+     
+     h[] <- value    : error, undefined key
+     h[x] <- value   : set values for keys `x` to `value`(s)
+     h[x] <- NULL    : delete keys `x`
+     
+     
 
 ## Allowable Values  
 

@@ -59,12 +59,14 @@
 # 
 #   h <- hash()
 # 
+#  \dontrun{
 #   hash:::.set( h, keys=letters, values=1:26 )
 #   hash:::.set( h, a="foo", b="bar", c="baz" )
 #   hash:::.set( h, c( aa="foo", ab="bar", ac="baz" ) )
 #   clear(h)
 #   hash:::.set( h, letters, values )
-# 
+#  } 
+#
 # @name set
 # @rdname set
 # @aliases set .set
@@ -111,7 +113,7 @@
             values <- li[[2]]    
         }
 
-        keys <- make.keys(keys)
+        keys <- make_keys(keys)
 
 
       # UNEQUAL keys and values both greater than one

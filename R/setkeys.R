@@ -1,23 +1,23 @@
 #' setkeys - change/rename the keys of a hash 
 #' 
-#' Changes the keys of a hash from \code{old} keys to \code{new}
+#' Changes the keys of a hash from `old` keys to `new`
 #'
 #' @param x hash object to rename keys on 
 #' @param old character (or coerciable to character); old keys/names
 #' @param new character (or coerciable to character); new keys/names
 #' 
-#' This methods renames keys in a hash. If there is a collision between old
-#' and new names, the old names are first copied to a temporary slot to 
+#' This methods renames keys in a hash. If there is a collision between *old*
+#' and *new* names, the old names are first copied to a temporary slot to 
 #' ensure  
 #' 
-#' \code{setkeys} is S4 generic so that other packages might also use the 
+#' `setkeys` is S4 generic so that other packages might also use the 
 #' generic functions
 #' 
-#' @return Invisiblly returns \code{x} with its keys renamed. 
+#' @return Invisiblly returns `x` with its keys renamed. 
 #' 
 #' @seealso 
-#'   \code{\link{keys}} 
-#'   \code{\link{hash}}
+#'   - [keys()] 
+#'   - [hash()]
 #'   
 #' @examples 
 #' 
@@ -31,7 +31,7 @@
 #'    setkeys( h3, keys(h), rev( keys(h) ) )
 #'    h3 
 #'    
-#' @note setkeys is modeled after \code{setnames} in the data.table package.  
+#' @note setkeys is modeled after `setnames` in the data.table package.  
 #' @name setkeys  
 #' @rdname setkeys
 #' @export 
@@ -103,7 +103,7 @@ setMethod( "setkeys", c("hash","ANY","ANY"),
       
     }
     
-    return( invisible(x) )
+    invisible(x)
     
   }
     

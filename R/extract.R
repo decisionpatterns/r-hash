@@ -3,74 +3,52 @@
 #' These are the hash accessor methods. They closely follow the R style. 
 #' 
 #' 
-#' @param x \code{\link{hash}} object 
+#' @param x [hash()] object 
 #' @param i keys to get or set
 #' @param j unused; retained to be compatoble with base package
 #' @param drop unused; retained to be compatible with base package
 # @param keys a vector of keys to be returned.
 # @param value For the replacement method, the value(s) to be set.
-#' @param ...  Arguments passed to additional methods \code{\link{sapply}}
+#' @param ...  Arguments passed to additional methods [sapply()]
 #' @param value the value to set for the key-value pair
 #' @param name the key name
 #'
-#' \code{$} is a look-up operator for a single key.  The base \code{$} method
+#' `$` is a look-up operator for a single key.  The base `$` method
 #' are used directly on the inherited environment.  The supplied key is taken 
-#' as a string literal and is not interpreted.  The replaement form, \code{$<-} 
+#' as a string literal and is not interpreted.  The replaement form, `$<-` 
 #' mutates the hash in place.
 #' 
-#' \code{[[} is the look-up, extraction operator.  It returns the value of a
+#' `[[` is the look-up, extraction operator.  It returns the value of a
 #' single key and will interpret its argument. The replacement method, 
-#' \code{[[<-} mutates the hash in place. 
+#' `[[<-` mutates the hash in place. 
 #' 
-#' \code{[} is a slice operator. It returns a hash with the subset of key-value 
-#' pairs. Unlike the other accessor methods, \code{[} returns a \emph{copy}. 
+#' `[` is a slice operator. It returns a hash with the subset of key-value 
+#' pairs. Unlike the other accessor methods, `[` returns a *copy*. 
 #' 
-#' All hash key misses return \code{NULL}. All hash key replacements with NULL
+#' All hash key misses return `NULL`. All hash key replacements with NULL
 #' delete the key-value pair from the hash.
 #' 
-#'   NAMED ACCESS/REPLACEMENT:
-#'   
-#'   h$x             : returns value of key \code{x}; 
-#'   h$x <- value    : sets key \code{x} to \code{value}; 
-#'   h$x <- NULL     : deletes key-value pair \code{x}
-#'    
-#'    
-#'   INTERPRETED ACCES/REPLACEMENT:
-#'     
-#'   h[[x]]          : returns value of key \code{x}; \code{x} is interpreted.
-#'   h[[x]] <- value : sets the values of key \code{x}; \code{x} is interpreted.
-#'   h[[x]] <- NULL  : deletes key-value pair \code{x}; \code{x} is interpreted.  
-#'   
-#'   
-#'   HASH SLICING:
-#'   h[]             : returns a copy of h, same as \code{copy(h)}
-#'   h[x]            : a hash slice of keys 
-#'   
-#'   h[] <- value    : error, undefined key
-#'   h[x] <- value   : set values for keys \code{x} to \code{value}(s)
-#'   h[x] <- NULL    : delete keys \code{x}
-#'   
-#'   
-#' \code{$} and \code{[[} return the value for the supplied argument. If 
-#' \code{i} is not a key of \code{x}, \code{NULL} is returned with a warning.
+
+#' `$` and `[[` return the value for the supplied argument. If 
+#' `i` is not a key of `x`, `NULL` is returned with a warning.
 #' 
-#' \code{[} returns a hash slice, a subhash copy \code{x} with only the keys 
-#' \code{i} defined. 
+#' `[` returns a hash slice, a subhash copy `x` with only the keys 
+#' `i` defined. 
 #' 
 #' See details above for the complete explanation.
 #' 
 #' @author Christopher Brown
 #' 
 #' @seealso 
-#'   \code{\link{del}} for removing keys
-#'   \code{\link{clear}} for removing all keys
+#'   [del()] for removing keys
+#'   [clear()] for removing all keys
 #'   
-#'   \code{\link{keys}} to get/set/rename keys
-#'   \code{\link{values}} to get/set/edit values
+#'   [keys()] to get/set/rename keys
+#'   [values()] to get/set/edit values
 #'
-#  \code{\link{set}}    to set values internal method
+#  [set()]    to set values internal method
 #   
-#'   \code{\link{hash}}  
+#'   [hash()]  
 #'   
 #'   
 #' @examples
@@ -124,7 +102,6 @@ NULL
 #' @name [,hash,ANY,missing,missing-method
 #' @rdname extract
 
-
 setMethod( 
   '[' , 
   signature( x="hash", i="ANY", j="missing", drop = "missing") ,  
@@ -140,7 +117,7 @@ setMethod(
     for( k in i ) 
       assign( k, mget( x=k, envir=x@.xData, ifnotfound = list(NULL) ), .h@.Data )
     
-    return(.h)
+    .h
     
   }
 )
@@ -151,7 +128,7 @@ setMethod(
 
 setMethod( '[', signature( 'hash', 'missing', 'missing', 'missing' ),
   function(x,i,j, ..., drop ) {
-    return( x )                  
+     x                   
   }
 )
 
@@ -169,7 +146,7 @@ setMethod( '[', signature( 'hash', 'missing', 'missing', 'missing' ),
 setReplaceMethod( '[', c(x ="hash", i="ANY" ,j="missing", value="ANY") ,
 	function( x, i, ...,  value ) {
 	  .set( x, i, value, ...  )  
-	  return( x )
+	   x 
     }
 )
 
@@ -181,7 +158,7 @@ setReplaceMethod( '[', c(x ="hash", i="ANY" ,j="missing", value="ANY") ,
 setReplaceMethod( '[', c(x="hash", i="ANY", j="missing", value="NULL") ,
     function( x, i, ...,  value ) {
       del( i, x )
-      return( x )
+       x 
     }
 )
   
@@ -244,7 +221,7 @@ setReplaceMethod( '$', c( x="hash", value="NULL"),
 setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="ANY") ,
   function(x,i,value) {
     assign( i, value, x@.Data )
-    return( x )
+     x 
   }
 )
 
@@ -255,7 +232,7 @@ setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="ANY") ,
 setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="NULL") ,
   function(x,i,value) {
     rm( list=i, envir=x@.Data )
-    return( x )
+     x 
   }
 )
 
