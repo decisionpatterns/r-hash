@@ -7,27 +7,27 @@
 \description{
 Implements a S4 hash class in R similar to hashes / associatesd arrays /
 dictionaries in other programming languages.  Where possible, the hash class
-uses the standard R accessors: \code{\$}, \code{[} and \code{[[} as well as
-other common hash methods.  Hash construction is flexible and takes several 
+uses the standard R accessors: \code{\\$}, \code{[} and \code{[[} as well as
+other common hash methods.  Hash construction is flexible and takes several
 syntaxes and all hash operations are supported.
 }
 \details{
-For shorter key-value pairs, lists yield higher performance but hashes 
-outperform list once the have an appreciable length (>100 elements). Hash 
+For shorter key-value pairs, lists yield higher performance but hashes
+outperform list once the have an appreciable length (>100 elements). Hash
 objects have defined methods that (should) make them flexible, intuitive and
 easy to use especially from those coming form other languages.
- 
+
 This class provides a hash/dictionary that provides the accessors and other
 methods common to other programming languages. The \code{haah} class inherits
 from environment and has no defined slots. It is essentially a wrapper arounf
-\code{\link[base]{environment}} and is very similar to reference classes in 
+\code{\link[base:environment]{base::environment()}} and is very similar to reference classes in
 that  most of the semantic are pass-by-reference rather than pass-by-value.
 For this reason, some of the behaviour is not as expected.
 }
 \section{Slots}{
 
 \describe{
-\item{\code{.xData}}{an \code{\link[base]{environment}}}
+\item{\code{.xData}}{an \code{\link[base:environment]{base::environment()}}}
 }}
 
 \examples{
@@ -46,8 +46,8 @@ For this reason, some of the behaviour is not as expected.
 }
 \seealso{
 \link{Extract}
-  \code{\link{is.hash}}
-  \code{\link{as.list.hash}}
+\code{\link[=is.hash]{is.hash()}}
+\code{\link[=as.list.hash]{as.list.hash()}}
 }
 \author{
 Christopher Brown

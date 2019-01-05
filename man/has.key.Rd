@@ -13,11 +13,11 @@ has.key(key, hash, ...)
 \arguments{
 \item{key}{A vector whose entries will be coerced to valid keys.}
 
-\item{hash}{A \code{\link{hash}} object.}
+\item{hash}{A \code{\link[=hash]{hash()}} object.}
 
 \item{...}{arguments passed to further functions
 
-\code{has.key} is a wrapper around \code{\link[base]{exists}}}
+\code{has.key} is a wrapper around \code{\link[base:exists]{base::exists()}}}
 }
 \value{
 logical A logical vector of length \code{key} indicating whether
@@ -34,8 +34,8 @@ which keys are defined on the hash.
     
 }
 \seealso{
-\code{\link[base]{exists}} 
-  \code{\link{hash}}
+\code{\link[base:exists]{base::exists()}}
+\code{\link[=hash]{hash()}}
 }
 \author{
 Christopher Brown

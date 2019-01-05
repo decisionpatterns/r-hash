@@ -11,9 +11,9 @@ attach(what, pos = 2L, ...)
 
 \item{pos}{integer where to attach the hash}
 
-\item{...}{additional arguments passed to \code{\link[base]{attach}}
+\item{...}{additional arguments passed to \code{\link[=base:attach]{base:attach()}}
 
-\code{attach} attached the environment part of a hash to the search path. 
+\code{attach} attached the environment part of a hash to the search path.
 The keys then become directly accessible.}
 }
 \description{
@@ -33,5 +33,5 @@ this function is not-exported; explicit declaration is necessary
   
 }
 \seealso{
-\code{\link[base]{attach}}
+\code{\link[=base:attach]{base:attach()}}
 }

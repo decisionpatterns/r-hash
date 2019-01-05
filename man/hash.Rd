@@ -29,12 +29,12 @@ is.hash(x)
 }
 \value{
 \code{hash} hash object
-   
-   \code{is.hash} logical value indicating if the argument is a hash.
-   
-   \code{as.list} list conversion from hash
-   
-   \code{length} integer; number of key-value pairs in the hash
+
+\code{is.hash} logical value indicating if the argument is a hash.
+
+\code{as.list} list conversion from hash
+
+\code{length} integer; number of key-value pairs in the hash
 
 integer Number of items in the hash.
 }
@@ -52,25 +52,25 @@ Returns the number of items in a hash
 
 \code{as.list.hash} convert a hash object to a list
 
-
-
-\emph{KEYS} must be a valid R name, must be a character vector and must not 
-be the empty string, \code{""}. When supplied by the used methods will try to 
-coerce the keys to valid names using \code{\link{make.keys}}
+\emph{KEYS} must be a valid R name, must be a character vector and must not
+be the empty string, \code{""}. When supplied by the used methods will try to
+coerce the keys to valid names using \code{\link[=make.keys]{make.keys()}}
 
 \emph{VALUES} are restricted to any valid R objects.
 HASH VALUES can be any R value, vector or object.
 
-\emph{code{hash}}  returns a hash object.  Key-value pairs may be specified 
+\emph{code{hash}}  returns a hash object.  Key-value pairs may be specified
 as: \cr
-* explicitly named arguments \code{keys} and \code{values} \cr
-* two unnamed objects of equal length as a set of key-value pairs \cr
-* key=value pairs \cr
-* a single naned vector \cr
-* as a list \cr
+\itemize{
+\item explicitly named arguments \code{keys} and \code{values} \cr
+\item two unnamed objects of equal length as a set of key-value pairs \cr
+\item key=value pairs \cr
+\item a single naned vector \cr
+\item as a list \cr
+}
 
 \emph{ACCESSORS.} Hashes may be accessed via the standard R accessors \code{[}, \code{[[} and
-\code{\$}.  See \code{\link[hash]{extract}} for details.
+\code{\\$}.  See \code{\link[hash:extract]{hash::extract()}} for details.
 
 \emph{PASS-BY REFERENCE.} Environments and hashes are special objects in R because
 only one copy exists globally. When provided as an argument to a function, no
@@ -84,7 +84,7 @@ For larger data structure, i.e. > 500 key value pair the performance of the
 hash becomes faster.  Much beyond that the performance of the hash far
 outperforms native lists.
 
-Return the number of items in the hash by calling \code{\link{length}} on
+Return the number of items in the hash by calling \code{\link[=length]{length()}} on
 the internal environment.
 }
 \examples{
@@ -114,9 +114,9 @@ the internal environment.
 
 }
 \seealso{
-\code{\link{extract}}
+\code{\link[=extract]{extract()}}
 
-See Also \code{\link{hash}}, \code{\link{length}}
+See Also \code{\link[=hash]{hash()}}, \code{\link[=length]{length()}}
 }
 \author{
 Christopher Brown

@@ -19,10 +19,10 @@ setkeys(x, old, new)
 \item{new}{character (or coerciable to character); new keys/names
 
 This methods renames keys in a hash. If there is a collision between old
-and new names, the old names are first copied to a temporary slot to 
-ensure  
+and new names, the old names are first copied to a temporary slot to
+ensure
 
-\code{setkeys} is S4 generic so that other packages might also use the 
+\code{setkeys} is S4 generic so that other packages might also use the
 generic functions}
 }
 \value{
@@ -48,6 +48,6 @@ setkeys is modeled after \code{setnames} in the data.table package.
    
 }
 \seealso{
-\code{\link{keys}} 
-  \code{\link{hash}}
+\code{\link[=keys]{keys()}}
+\code{\link[=hash]{hash()}}
 }

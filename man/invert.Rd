@@ -14,9 +14,9 @@ invert(x)
 inverted.hash(...)
 }
 \arguments{
-\item{x}{A \code{\link{hash}} object}
+\item{x}{A \code{\link[=hash]{hash()}} object}
 
-\item{...}{Arguments passed to the \code{\link{hash}} function.}
+\item{...}{Arguments passed to the \code{\link[=hash]{hash()}} function.}
 }
 \value{
 A hash object with: keys as the unique elements of \code{values(x)}
@@ -32,15 +32,14 @@ IN THE FUTURE.
 \code{inverted.hash} is a constructor method that directly makes an inverted
 hash.
 
-
-Each element of the \code{values(x)} becomes a key in a new hash; the 
-associatedis coerced to a key value is the  
+Each element of the \code{values(x)} becomes a key in a new hash; the
+associatedis coerced to a key value is the
 The value becomes the associated key.
 
 For \code{inverted.hash}, a hash is created thnn inverted.  It is defined
 as:
 
-\code{ function(...) invert(hash(...)) }
+\code{function(...) invert(hash(...))}
 }
 \examples{
 
@@ -51,7 +50,7 @@ as:
   
 }
 \seealso{
-See also \code{link{hash}} and \code{\link{make.keys}}
+See also \code{link{hash}} and \code{\link[=make.keys]{make.keys()}}
 }
 \author{
 Christopher Brown

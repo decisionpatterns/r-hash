@@ -31,9 +31,9 @@ logical.
     
 }
 \seealso{
-\code{\link{hash}}
-  \code{\link{exists}}
-  \code{\link{length}}
+\code{\link[=hash]{hash()}}
+\code{\link[=exists]{exists()}}
+\code{\link[=length]{length()}}
 }
 \author{
 Christopher Brown

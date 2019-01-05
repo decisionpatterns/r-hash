@@ -16,11 +16,11 @@ A character vector of valid keys/names
 \description{
 Given an vector of any type, \code{make.keys} tries to coerce it into a
 character vector that can be used as a hash key.  This is used internally by
-the hash package and should not be normally needed.  It is \emph{not} 
+the hash package and should not be normally needed.  It is \emph{not}
 exported.
 }
 \details{
-This function is used internally by the \code{\link{hash}} class to ensure
+This function is used internally by the \code{\link[=hash]{hash()}} class to ensure
 that the keys are valid. There should be no need to use this externally and
 is only documented for completeness.
 }
@@ -30,8 +30,8 @@ is only documented for completeness.
   make.keys( 1:26 ) 
 }
 \seealso{
-\code{\link{hash}}
-  \code{\link[base]{make.names}}
+\code{\link[=hash]{hash()}}
+\code{\link[base:make.names]{base::make.names()}}
 }
 \author{
 Christopher Brown

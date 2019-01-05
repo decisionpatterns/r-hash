@@ -37,8 +37,8 @@ that the memory from the environment is freed.
 
 }
 \seealso{
-\code{\link{del}} to remove specific key-values from the hash.
-  \code{\link{hash}}.
+\code{\link[=del]{del()}} to remove specific key-values from the hash.
+\code{\link[=hash]{hash()}}.
 }
 \author{
 Christopher Brown
