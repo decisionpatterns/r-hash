@@ -25,12 +25,17 @@ method provides an identical unlinked copy of the hash.}
 hash, copy of hash \code{x}
 }
 \description{
-Create a copy of a hash.
+Create a \emph{copy} of a hash.
 }
 \examples{
-
   h <- hash( a=1, b=2 )
-  h.new <- copy( h )
+  g <- h
+  g$a <- "foo"
+  h$a     # "foo" 
+  
+  h_new <- copy( h )
+  h_new$a <- "bar"
+  h$a     # still "foo"
   
 }
 \seealso{

@@ -9,7 +9,7 @@
 \alias{del,ANY,hash-method}
 \alias{del,character,hash-method}
 \alias{delete,ANY,hash-method}
-\title{del, delete - remove key-value pair(s) from a hash}
+\title{Remove key-value pair(s) from a hash}
 \usage{
 del(x, hash)
 
@@ -24,7 +24,7 @@ delete(x, hash)
 \arguments{
 \item{x}{An object that will be coerced to valid key(s) to be removed from
 the hash.  \code{x} will be coerced to a valid hash keys using
-\code{\link[=make.keys]{make.keys()}}}
+\code{\link[=make_keys]{make_keys()}}}
 
 \item{hash}{A \code{\link[=hash]{hash()}} object}
 }
@@ -34,8 +34,8 @@ items from the hash.
 }
 \description{
 Removes key-value pair(s) from a hash by name of the object. There are also
-R-like methods described in \code{link{Extract}}. To delete all
-keys, use the \code{\link[=clear]{clear()}} method.
+R-like methods described in \link{Extract}. To delete all keys, use
+\code{\link[=clear]{clear()}}.
 }
 \examples{
 
@@ -60,10 +60,12 @@ keys, use the \code{\link[=clear]{clear()}} method.
   
 }
 \seealso{
-\code{\link[base:rm]{base::rm()}} base function used by \code{del}
-\code{\link[=Extract]{Extract()}} for R-like accessor
-\code{\link[=clear]{clear()}} to remove all key-values and return an empty hash
-\code{\link[=hash]{hash()}}
+\itemize{
+\item \code{\link[base:rm]{base::rm()}} base function used by \code{del}
+\item \link{Extract} for R-like accessor
+\item \code{\link[=clear]{clear()}} to remove all key-values and return an empty hash
+\item \code{\link[=hash]{hash()}}
+}
 }
 \author{
 Christopher Brown

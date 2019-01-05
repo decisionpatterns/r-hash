@@ -9,7 +9,8 @@ test_that( 'copy', {
   h_copy %>% expect_is('hash')
   h_copy %>% expect_equal(h)
   
-  expect_true( address(h) != address(h_copy))
+  if( require(pryr) ) 
+    expect_true( pryr::address(h) != pryr::address(h_copy))
   
 })
 
@@ -23,7 +24,8 @@ test_that( 'empty hash [#12]', {
   h_copy %>% length %>% expect_equal(0)
   h_copy %>% expect_equal(h)
   
-  expect_true( address(h) != address(h_copy))
+  if( require(pryr) )
+    expect_true( pryr::address(h) != pryr::address(h_copy))
 
 })
 
@@ -37,6 +39,7 @@ test_that( 'single key-value pair [#14]', {
   h_copy %>% length %>% expect_equal(1)
   expect_equivalent(h_copy, h)
   
-  expect_true( address(h) != address(h_copy))
+  if( require(pryr) )
+    expect_true( pryr::address(h) != pryr::address(h_copy))
 
 })

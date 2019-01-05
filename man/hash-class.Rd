@@ -9,20 +9,19 @@ Implements a S4 hash class in R similar to hashes / associatesd arrays /
 dictionaries in other programming languages.  Where possible, the hash class
 uses the standard R accessors: \code{\\$}, \code{[} and \code{[[} as well as
 other common hash methods.  Hash construction is flexible and takes several
-syntaxes and all hash operations are supported.
+syntaxes. See the constructor method \code{\link[=hash]{hash()}} for detaiols
 }
 \details{
-For shorter key-value pairs, lists yield higher performance but hashes
-outperform list once the have an appreciable length (>100 elements). Hash
-objects have defined methods that (should) make them flexible, intuitive and
-easy to use especially from those coming form other languages.
+For shorter key-value pairs, lists yield higher performance. Hashes
+outperform list once the have an appreciable length typically greater than
+100 elements. Hash objects have defined methods that (should) make them
+flexible, intuitive and easy to use especially for developers familar with
+other languages.
 
-This class provides a hash/dictionary that provides the accessors and other
-methods common to other programming languages. The \code{haah} class inherits
-from environment and has no defined slots. It is essentially a wrapper arounf
-\code{\link[base:environment]{base::environment()}} and is very similar to reference classes in
-that  most of the semantic are pass-by-reference rather than pass-by-value.
-For this reason, some of the behaviour is not as expected.
+The \code{haah} class inherits from environment and has no defined slots. It is
+essentially a wrapper around \code{\link[base:environment]{base::environment()}} and is very similar to
+reference classes in that  most of the semantic are pass-by-reference rather
+than pass-by-value. For this reason, some of the behaviour is not as expected.
 }
 \section{Slots}{
 
@@ -31,7 +30,6 @@ For this reason, some of the behaviour is not as expected.
 }}
 
 \examples{
-  
   h <- new( "hash" )   # new empty hash
   h <- hash()          # same
   class(h)             # "hash"
@@ -41,13 +39,16 @@ For this reason, some of the behaviour is not as expected.
   
   as.list( h )         # convert to a list
 
+  hash( list(a=1,b=1) )
   showClass("hash")
 
 }
 \seealso{
-\link{Extract}
-\code{\link[=is.hash]{is.hash()}}
-\code{\link[=as.list.hash]{as.list.hash()}}
+\itemize{
+\item \link{extract} : for accessor methods
+\item \code{\link[=is.hash]{is.hash()}} : for testing whether the object is a hash
+\item \code{\link[=as.list.hash]{as.list.hash()}} : for converting hash to a list
+}
 }
 \author{
 Christopher Brown

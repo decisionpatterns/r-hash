@@ -54,7 +54,7 @@ Returns the number of items in a hash
 
 \emph{KEYS} must be a valid R name, must be a character vector and must not
 be the empty string, \code{""}. When supplied by the used methods will try to
-coerce the keys to valid names using \code{\link[=make.keys]{make.keys()}}
+coerce the keys to valid names using \code{\link[=make_keys]{make_keys()}}
 
 \emph{VALUES} are restricted to any valid R objects.
 HASH VALUES can be any R value, vector or object.

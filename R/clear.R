@@ -18,8 +18,8 @@
 #' @author Christopher Brown
 #' 
 #' @seealso 
-#'   [del()] to remove specific key-values from the hash.
-#'   [hash()].
+#'   - [del()] to remove specific key-values from the hash.
+#'   - [hash()] to create a new hash 
 #'   
 #' @examples
 #' 

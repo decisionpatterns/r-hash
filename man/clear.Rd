@@ -37,8 +37,10 @@ that the memory from the environment is freed.
 
 }
 \seealso{
-\code{\link[=del]{del()}} to remove specific key-values from the hash.
-\code{\link[=hash]{hash()}}.
+\itemize{
+\item \code{\link[=del]{del()}} to remove specific key-values from the hash.
+\item \code{\link[=hash]{hash()}} to create a new hash
+}
 }
 \author{
 Christopher Brown

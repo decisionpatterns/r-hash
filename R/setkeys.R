@@ -6,8 +6,8 @@
 #' @param old character (or coerciable to character); old keys/names
 #' @param new character (or coerciable to character); new keys/names
 #' 
-#' This methods renames keys in a hash. If there is a collision between old
-#' and new names, the old names are first copied to a temporary slot to 
+#' This methods renames keys in a hash. If there is a collision between *old*
+#' and *new* names, the old names are first copied to a temporary slot to 
 #' ensure  
 #' 
 #' `setkeys` is S4 generic so that other packages might also use the 
@@ -16,8 +16,8 @@
 #' @return Invisiblly returns `x` with its keys renamed. 
 #' 
 #' @seealso 
-#'   [keys()] 
-#'   [hash()]
+#'   - [keys()] 
+#'   - [hash()]
 #'   
 #' @examples 
 #' 
@@ -103,7 +103,7 @@ setMethod( "setkeys", c("hash","ANY","ANY"),
       
     }
     
-    return( invisible(x) )
+    invisible(x)
     
   }
     

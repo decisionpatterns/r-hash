@@ -28,29 +28,7 @@
 #' All hash key misses return `NULL`. All hash key replacements with NULL
 #' delete the key-value pair from the hash.
 #' 
-#'   NAMED ACCESS/REPLACEMENT:
-#'   
-#'   h$x             : returns value of key `x`; 
-#'   h$x <- value    : sets key `x` to `value`; 
-#'   h$x <- NULL     : deletes key-value pair `x`
-#'    
-#'    
-#'   INTERPRETED ACCES/REPLACEMENT:
-#'     
-#'   h[[x]]          : returns value of key `x`; `x` is interpreted.
-#'   h[[x]] <- value : sets the values of key `x`; `x` is interpreted.
-#'   h[[x]] <- NULL  : deletes key-value pair `x`; `x` is interpreted.  
-#'   
-#'   
-#'   HASH SLICING:
-#'   h[]             : returns a copy of h, same as `copy(h)`
-#'   h[x]            : a hash slice of keys 
-#'   
-#'   h[] <- value    : error, undefined key
-#'   h[x] <- value   : set values for keys `x` to `value`(s)
-#'   h[x] <- NULL    : delete keys `x`
-#'   
-#'   
+
 #' `$` and `[[` return the value for the supplied argument. If 
 #' `i` is not a key of `x`, `NULL` is returned with a warning.
 #' 
@@ -68,7 +46,7 @@
 #'   [keys()] to get/set/rename keys
 #'   [values()] to get/set/edit values
 #'
-#  \code{\link{set}}    to set values internal method
+#  [set()]    to set values internal method
 #   
 #'   [hash()]  
 #'   
@@ -124,7 +102,6 @@ NULL
 #' @name [,hash,ANY,missing,missing-method
 #' @rdname extract
 
-
 setMethod( 
   '[' , 
   signature( x="hash", i="ANY", j="missing", drop = "missing") ,  
@@ -140,7 +117,7 @@ setMethod(
     for( k in i ) 
       assign( k, mget( x=k, envir=x@.xData, ifnotfound = list(NULL) ), .h@.Data )
     
-    return(.h)
+    .h
     
   }
 )
@@ -151,7 +128,7 @@ setMethod(
 
 setMethod( '[', signature( 'hash', 'missing', 'missing', 'missing' ),
   function(x,i,j, ..., drop ) {
-    return( x )                  
+     x                   
   }
 )
 
@@ -169,7 +146,7 @@ setMethod( '[', signature( 'hash', 'missing', 'missing', 'missing' ),
 setReplaceMethod( '[', c(x ="hash", i="ANY" ,j="missing", value="ANY") ,
 	function( x, i, ...,  value ) {
 	  .set( x, i, value, ...  )  
-	  return( x )
+	   x 
     }
 )
 
@@ -181,7 +158,7 @@ setReplaceMethod( '[', c(x ="hash", i="ANY" ,j="missing", value="ANY") ,
 setReplaceMethod( '[', c(x="hash", i="ANY", j="missing", value="NULL") ,
     function( x, i, ...,  value ) {
       del( i, x )
-      return( x )
+       x 
     }
 )
   
@@ -244,7 +221,7 @@ setReplaceMethod( '$', c( x="hash", value="NULL"),
 setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="ANY") ,
   function(x,i,value) {
     assign( i, value, x@.Data )
-    return( x )
+     x 
   }
 )
 
@@ -255,7 +232,7 @@ setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="ANY") ,
 setReplaceMethod( '[[', c(x="hash", i="ANY", j="missing", value="NULL") ,
   function(x,i,value) {
     rm( list=i, envir=x@.Data )
-    return( x )
+     x 
   }
 )
 

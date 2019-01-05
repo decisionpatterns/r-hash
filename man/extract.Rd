@@ -56,26 +56,6 @@ pairs. Unlike the other accessor methods, \code{[} returns a \emph{copy}.
 All hash key misses return \code{NULL}. All hash key replacements with NULL
 delete the key-value pair from the hash.
 
-NAMED ACCESS/REPLACEMENT:
-
-h$x             : returns value of key \code{x};
-h$x <- value    : sets key \code{x} to \code{value};
-h$x <- NULL     : deletes key-value pair \code{x}
-
-INTERPRETED ACCES/REPLACEMENT:
-
-h[\link{x}]          : returns value of key \code{x}; \code{x} is interpreted.
-h[\link{x}] <- value : sets the values of key \code{x}; \code{x} is interpreted.
-h[\link{x}] <- NULL  : deletes key-value pair \code{x}; \code{x} is interpreted.
-
-HASH SLICING:
-h[]             : returns a copy of h, same as \code{copy(h)}
-h\link{x}            : a hash slice of keys
-
-h[] <- value    : error, undefined key
-h\link{x} <- value   : set values for keys \code{x} to \code{value}(s)
-h\link{x} <- NULL    : delete keys \code{x}
-
 \code{$} and \code{[[} return the value for the supplied argument. If
 \code{i} is not a key of \code{x}, \code{NULL} is returned with a warning.
 

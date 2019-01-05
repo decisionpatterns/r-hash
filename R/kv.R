@@ -44,6 +44,6 @@ kv.hash <- function(x, ...) {
     kv[[i]] = list( k=names(x)[[i]], v=x[[i]] )  
   }
   names(kv)=names(x)  
-  return(kv)
+  kv
 }
 

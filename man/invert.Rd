@@ -50,7 +50,7 @@ as:
   
 }
 \seealso{
-See also \code{link{hash}} and \code{\link[=make.keys]{make.keys()}}
+See also \code{link{hash}} and \code{\link[=make_keys]{make_keys()}}
 }
 \author{
 Christopher Brown

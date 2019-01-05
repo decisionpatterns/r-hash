@@ -32,7 +32,7 @@
 #' 
 #' @author Christopher Brown
 #' 
-#' @seealso See also \code{link{hash}} and [make.keys()]
+#' @seealso See also \code{link{hash}} and [make_keys()]
 #'
 #' @examples
 #' 
@@ -54,13 +54,13 @@ setMethod( 'invert', 'hash',
   function(x) {
     h <- hash() 
     for( k in keys(x) ) {
-      for( v in make.keys(x[[k]]) ) {
-          if ( ! has.key(v,h) ) h[[v]] <- k 
+      for( v in make_keys(x[[k]]) ) {
+          if ( ! has_key(h,v) ) h[[v]] <- k 
             else h[[v]] <- append( h[[v]], k )
       }
     }
 
-    return(h)
+    h
   }
 
 )

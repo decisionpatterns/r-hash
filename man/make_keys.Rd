@@ -27,7 +27,7 @@ instead.
 \details{
 Given a vector of any type, \code{make_keys} tries to coerce it into a
 character vector that can be used as a hash key. It is just a wrapper
-around \code{\link[base:as_character]{base::as_character()}} with some additional error checking.
+around \code{\link[base:as.character]{base::as.character()}} with some additional error checking.
 
 #' \code{make_keys} will replace \code{make.keys} in a future release.
 }
@@ -36,13 +36,15 @@ This is used internally by the hash package and should not be normally
 needed.  It is \emph{not} exported.
 }
 \examples{
+
+\dontrun{
   make_keys( letters )
   make_keys( 1:26 )
-   
+}    
 }
 \seealso{
 \itemize{
-\item \code{\link[base:as_character]{base::as_character()}} - which this function wraps
-\item \code{\link[base:make.names]{base::make.names()}} - related method
+\item \code{\link[base:as.character]{base::as.character()}}
+\item \code{\link[base:make.names]{base::make.names()}}
 }
 }

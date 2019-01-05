@@ -12,7 +12,7 @@
 
 #' Given a vector of any type, `make_keys` tries to coerce it into a
 #' character vector that can be used as a hash key. It is just a wrapper 
-#' around [base::as_character()] with some additional error checking.
+#' around [base::as.character()] with some additional error checking.
 #' 
 #' #' `make_keys` will replace `make.keys` in a future release.
 #'
@@ -21,15 +21,16 @@
 #' needed.  It is *not* exported.
 #' 
 #' @return A character vector of valid keys/names
-#' 
 #' @seealso 
-#'   - [base::as_character()] - which this function wraps 
-#'   - [base::make.names()] - related method
-#'   
+#'  - [base::as.character()]
+#'  - [base::make.names()]
+#'  
 #' @examples
+#' 
+#' \dontrun{
 #'   make_keys( letters )
 #'   make_keys( 1:26 )
-#'    
+#' }    
 # @export   
 make_keys <- function(key) {
 

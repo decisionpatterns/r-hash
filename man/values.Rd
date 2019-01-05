@@ -5,7 +5,6 @@
 \alias{values}
 \alias{values,hash-method}
 \alias{values<-}
-\alias{values<-,hash,ANY-mehtod}
 \alias{values<-,hash-method}
 \title{values}
 \usage{
@@ -20,7 +19,7 @@ values(x, ...) <- value
 \arguments{
 \item{x}{hash object}
 
-\item{...}{additional arguments passed to sapply
+\item{...}{Unused.
 
 The \code{values} method returns a named-list of key value pairs from a hash.
 If a hash is desired, use the hash slice method, \code{h[x]}.
@@ -77,5 +76,7 @@ Get/set values for a hash object
   
 }
 \seealso{
-\code{\link[hash:extract]{hash::extract()}} for R-like accessors
+\itemize{
+\item \link{extract} for R-like accessors
+}
 }

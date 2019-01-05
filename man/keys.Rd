@@ -68,8 +68,10 @@ don't provide a sorted list.
 
 }
 \seealso{
-\code{\link[=setkeys]{setkeys()}} : rename specific hash keys.
-\code{\link[=hash]{hash()}} : hash object
+\itemize{
+\item \code{\link[=setkeys]{setkeys()}} : rename specific hash keys.
+\item \code{\link[=hash]{hash()}} : hash object
+}
 }
 \author{
 Christopher Brown

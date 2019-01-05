@@ -25,8 +25,8 @@
 #' @author Christopher Brown
 #' 
 #' @seealso
-#'   [setkeys()] : rename specific hash keys. 
-#'   [hash()] : hash object
+#'   - [setkeys()] : rename specific hash keys. 
+#'   - [hash()] : hash object
 #'   
 #' @examples
 #' 
@@ -76,7 +76,7 @@ setGeneric( "keys<-", function(x,value) standardGeneric( "keys<-") )
 setReplaceMethod( "keys", c('hash','ANY'), 
   function( x, value) { 
     value <- as.character(value)
-    return( setkeys(x, keys(x), value ) )
+    setkeys(x, keys(x), value ) 
   }
 )  
 
@@ -87,7 +87,7 @@ setReplaceMethod( "keys", c('hash','ANY'),
 setReplaceMethod( "keys", c('hash','ANY'), 
   function( x, value) { 
     value <- as.character(value)
-    return( setkeys(x, keys(x), value ) )
+    setkeys(x, keys(x), value ) 
   }
 ) 
 

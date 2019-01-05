@@ -24,7 +24,7 @@
 #' 
 #' *KEYS* must be a valid R name, must be a character vector and must not 
 #' be the empty string, `""`. When supplied by the used methods will try to 
-#' coerce the keys to valid names using [make.keys()]
+#' coerce the keys to valid names using [make_keys()]
 #' 
 #' *VALUES* are restricted to any valid R objects.
 #' HASH VALUES can be any R value, vector or object.
@@ -92,6 +92,7 @@
 #' 
 #' @rdname hash
 #' @aliases hash 
+#' @importFrom methods new
 #' @export hash
 
 hash <- function( ... ) {
@@ -116,7 +117,7 @@ hash <- function( ... ) {
     }
   }
 
-  return(h)
+  h
 
 }
 	
@@ -127,6 +128,7 @@ hash <- function( ... ) {
 
 #' @aliases is.hash
 #' @rdname  hash
+#' @importFrom methods is
 #' @export is.hash
 
 is.hash <- function(x) is( x, "hash" )

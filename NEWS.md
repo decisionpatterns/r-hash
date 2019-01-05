@@ -1,3 +1,19 @@
+# 2019-01-04 Version 3.3.0
+
+ * Converted documentation to MD via `roxygen2md()`
+ 
+ * Added additional tests
+ 
+ * `values()` now uses `mget`.  Thanks to @MRohani for leading to this find. 
+
+ * `make.keys()` -> `make_keys()`; `make.keys()` will be deprecated in the future.
+   
+ * `has.key()` -> `has_key()`; `has.key()` will be deprecated in the future.
+
+ * Added `head()` and `tail()` methods. 
+ 
+ * Added `as.data.frame.hash()` method.
+
 # 2017-03-01 Vesion 3.2.0 
 
  * added `kv` function to iterate by key and value
