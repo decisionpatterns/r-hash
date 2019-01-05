@@ -40,15 +40,13 @@
 #' @author Christopher Brown
 #' 
 #' @seealso 
-#'   [del()] for removing keys
-#'   [clear()] for removing all keys
-#'   
-#'   [keys()] to get/set/rename keys
-#'   [values()] to get/set/edit values
-#'
+#' 
+#'   - [del()] for removing keys
+#'   - [clear()] for removing all keys
+#'   - [keys()] to get/set/rename keys
+#'   - [values()] to get/set/edit values
 #  [set()]    to set values internal method
-#   
-#'   [hash()]  
+#'   - [hash()]  
 #'   
 #'   
 #' @examples

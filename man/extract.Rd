@@ -105,13 +105,13 @@ These are the hash accessor methods. They closely follow the R style.
 
 }
 \seealso{
-\code{\link[=del]{del()}} for removing keys
-\code{\link[=clear]{clear()}} for removing all keys
-
-\code{\link[=keys]{keys()}} to get/set/rename keys
-\code{\link[=values]{values()}} to get/set/edit values
-
-\code{\link[=hash]{hash()}}
+\itemize{
+\item \code{\link[=del]{del()}} for removing keys
+\item \code{\link[=clear]{clear()}} for removing all keys
+\item \code{\link[=keys]{keys()}} to get/set/rename keys
+\item \code{\link[=values]{values()}} to get/set/edit values
+\item \code{\link[=hash]{hash()}}
+}
 }
 \author{
 Christopher Brown

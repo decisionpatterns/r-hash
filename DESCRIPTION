@@ -1,7 +1,7 @@
 Package: hash
 Type: Package
 Title: A Hash/Dictionary/Map/Associated Array for R 
-Version: 3.3.0
+Version: 3.3.1
 Date: 2019-01-05
 Authors@R: c(
     person("Christopher", "Brown", , "chris.brown@decisionpatterns.com", c("aut", "cre") ),

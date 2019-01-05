@@ -2,13 +2,12 @@
 
 ## hash/dictionary/maps in R
 
-[![CRAN](https://www.r-pkg.org/badges/version/hash)](https://cran.rstudio.com/web/packages/hash/index.html) 
-[![License](https://img.shields.io/badge/license-GPL%20%28%3E=%203%29-brightgreen.svg?style=flat)](https://www.gnu.org/licenses/gpl-3.0.html) 
+![](https://img.shields.io/cran/v/hash.svg) <!-- Version --> 
+![](https://img.shields.io/cran/l/hash.svg) <!-- License --> 
+[![lifecycle](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![Downloads](https://cranlogs.r-pkg.org/badges/hash?color=brightgreen)](https://www.r-pkg.org/pkg/hash)
-[![](http://cranlogs.r-pkg.org/badges/grand-total/hash)](http://cran.rstudio.com/web/packages/hash/index.html)
-[![software impact](http://depsy.org/api/package/r/hash/badge.svg)](http://depsy.org/package/r/hash)
-
-
+[![](http://cranlogs.r-pkg.org/badges/grand-total/hash)](https://cran.r-project.org/package=hash)
+<!-- [![Research software impact](http://depsy.org/api/package/cran/searchable/badge.svg)](http://depsy.org/package/r/searchable) -->
 
 The *hash* package provides a fully-functional hash/dictionaryfor the R language. It provides richer features and finer control of hash behavior than using native R structures like list or environments and has as a user-friendly interface. Performance-wise it has similar and sometimes better performance than these structures especially for larger objects.
 
