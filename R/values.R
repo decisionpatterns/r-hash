@@ -7,23 +7,23 @@
 #' @param value to be set 
 #' @param ... additional arguments passed to sapply
 #' 
-#' The \code{values} method returns a named-list of key value pairs from a hash.
-#' If a hash is desired, use the hash slice method, \code{h[x]}. 
+#' The `values` method returns a named-list of key value pairs from a hash.
+#' If a hash is desired, use the hash slice method, `h[x]`. 
 #' 
 #' List elements are named after the corresponding key. In previous versions,
 #' the return was simplified. This is no longer the case. Users should 
-#' simplify arguments if needed using \code{unlist} or similar. See examples.
+#' simplify arguments if needed using `unlist` or similar. See examples.
 #' 
-#' If argument \code{keys} is provided, only these keys are
+#' If argument `keys` is provided, only these keys are
 #' returned. This also allows for returning values mulitple times as in:
 #' 
-#' \code{ values(h, keys=c( 'a','a','b' ) ) }
+#' ` values(h, keys=c( 'a','a','b' ) ) `
 #' 
 #' This is now the preferred method for returning multiple values for the same
 #' key.
 #' 
-#' The replacement method, \code{values<-} can replace all the values or simply
-#' those associated with the supplied \code{keys}.  Use of the accessor '[' is
+#' The replacement method, `values<-` can replace all the values or simply
+#' those associated with the supplied `keys`.  Use of the accessor '[' is
 #' almost always preferred.
 #' 
 #' @return 
@@ -32,7 +32,7 @@
 #' values. 
 #' 
 #' @seealso 
-#'   \code{\link[hash]{extract}} for R-like accessors
+#'   [hash::extract()] for R-like accessors
 #'
 #' @examples
 #'   h <- hash( letters, 1:26 )

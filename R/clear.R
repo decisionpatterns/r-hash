@@ -1,16 +1,16 @@
 #' Removes all key-value pairs from a hash
 #' 
-#' \code{clear} removes all key-values from a hash.
+#' `clear` removes all key-values from a hash.
 #' 
-#' @param x A \code{hash} object.
+#' @param x A `hash` object.
 #' 
 #' @details
 #' 
-#' \code{clear} removes (\code{rm}) the key-value pairs on the hash.
+#' `clear` removes (`rm`) the key-value pairs on the hash.
 #' For large hashes it might be faster to reinitialize the hash, though this
 #' might cause memory leaks.
 #'
-#' @note \code{clear} should be called prior to removing a hash.  This ensures
+#' @note `clear` should be called prior to removing a hash.  This ensures
 #' that the memory from the environment is freed.
 #' 
 #' @return None. Method clear exists entirely for its side effects.
@@ -18,8 +18,8 @@
 #' @author Christopher Brown
 #' 
 #' @seealso 
-#'   \code{\link{del}} to remove specific key-values from the hash.
-#'   \code{\link{hash}}.
+#'   [del()] to remove specific key-values from the hash.
+#'   [hash()].
 #'   
 #' @examples
 #' 

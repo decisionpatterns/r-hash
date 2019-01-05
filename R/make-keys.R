@@ -1,11 +1,11 @@
 #' creates/coerces objects to proper hash keys
 #' 
-#' Given an vector of any type, \code{make.keys} tries to coerce it into a
+#' Given an vector of any type, `make.keys` tries to coerce it into a
 #' character vector that can be used as a hash key.  This is used internally by
-#' the hash package and should not be normally needed.  It is \emph{not} 
+#' the hash package and should not be normally needed.  It is *not* 
 #' exported.
 #' 
-#' This function is used internally by the \code{\link{hash}} class to ensure
+#' This function is used internally by the [hash()] class to ensure
 #' that the keys are valid. There should be no need to use this externally and
 #' is only documented for completeness.
 #' 
@@ -16,8 +16,8 @@
 #' @author Christopher Brown
 #' 
 #' @seealso 
-#'   \code{\link{hash}}
-#'   \code{\link[base]{make.names}}
+#'   [hash()]
+#'   [base::make.names()]
 #'   
 #' @keywords methods data manip
 #' 

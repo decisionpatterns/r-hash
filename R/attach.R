@@ -4,7 +4,7 @@
 #' @param pos integer where to attach the hash
 #' @param ... additional arguments passed to [base:attach()]
 #' 
-#' \code{attach} attached the environment part of a hash to the search path. 
+#' `attach` attached the environment part of a hash to the search path. 
 #' The keys then become directly accessible. 
 #' 
 #' @seealso 

@@ -1,23 +1,23 @@
 #' Test for existence of key(s) on a hash
 #' 
-#' \code{has.key} returns a logical vector as long as \code{keys}, indicating
+#' `has.key` returns a logical vector as long as `keys`, indicating
 #' which keys are defined on the hash.
 #' 
 #' @param key A vector whose entries will be coerced to valid keys.
-#' @param hash A \code{\link{hash}} object.
+#' @param hash A [hash()] object.
 #' @param ...  arguments passed to further functions
 #' 
-#' \code{has.key} is a wrapper around \code{\link[base]{exists}}
+#' `has.key` is a wrapper around [base::exists()]
 #' 
-#' @return logical A logical vector of length \code{key} indicating whether
-#' the key is defined in the hash.  \code{has.key} also accepts \code{...} to
-#' be passed to underlying \code{sapply}
+#' @return logical A logical vector of length `key` indicating whether
+#' the key is defined in the hash.  `has.key` also accepts `...` to
+#' be passed to underlying `sapply`
 #' 
 #' @author Christopher Brown
 #' 
 #' @seealso
-#'   \code{\link[base]{exists}} 
-#'   \code{\link{hash}}
+#'   [base::exists()] 
+#'   [hash()]
 #' 
 #' @examples
 #'     h <- hash( letters, 1:26 )

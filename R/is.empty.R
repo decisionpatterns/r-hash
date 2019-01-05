@@ -1,21 +1,21 @@
 #' Test if a hash has no key-value pairs.
 #' 
-#' \code{is.empty} tests to see if any key value pairs are assigned on a
-#' \code{hash} object.
+#' `is.empty` tests to see if any key value pairs are assigned on a
+#' `hash` object.
 #' 
 #' @param x hash object.
 #' 
-#' Returns \code{TRUE} if no key-value pairs are defined for the hash,
-#' \code{FALSE} otherwise.
+#' Returns `TRUE` if no key-value pairs are defined for the hash,
+#' `FALSE` otherwise.
 #' 
 #' @return logical.
 #' 
 #' @author Christopher Brown
 #' 
 #' @seealso 
-#'   \code{\link{hash}}
-#'   \code{\link{exists}}
-#'   \code{\link{length}}
+#'   [hash()]
+#'   [exists()]
+#'   [length()]
 #'   
 #' @examples
 #' 

@@ -2,22 +2,22 @@
 #' 
 #' Removes key-value pair(s) from a hash by name of the object. There are also 
 #' R-like methods described in \code{link{Extract}}. To delete all 
-#' keys, use the \code{\link{clear}} method.
+#' keys, use the [clear()] method.
 #' 
 #' @param x An object that will be coerced to valid key(s) to be removed from
-#' the hash.  \code{x} will be coerced to a valid hash keys using
-#' \code{\link{make.keys}}
-#' @param hash A \code{\link{hash}} object
+#' the hash.  `x` will be coerced to a valid hash keys using
+#' [make.keys()]
+#' @param hash A [hash()] object
 #' @return None. This method exists solely for the side-effects of removing
 #' items from the hash.
 #' 
 #' @author Christopher Brown
 #' 
 #' @seealso
-#'    \code{\link[base]{rm}} base function used by \code{del}
-#'    \code{\link{Extract}} for R-like accessor
-#'    \code{\link{clear}} to remove all key-values and return an empty hash
-#'    \code{\link{hash}}
+#'    [base::rm()] base function used by `del`
+#'    [Extract()] for R-like accessor
+#'    [clear()] to remove all key-values and return an empty hash
+#'    [hash()]
 #'  
 #' @keywords methods data manip
 #' @examples

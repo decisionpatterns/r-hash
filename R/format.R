@@ -7,7 +7,7 @@
 #' @param ... additional arguments 
 #' 
 #' @seealso 
-#'   \code{\link{format}}
+#'   [format()]
 #'   
 #' @name format
 #' @aliases format,hash-method format
