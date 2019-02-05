@@ -22,7 +22,7 @@ Latest Release:
 Development Version:
 
     install.packages('devtools')
-    devtools::install_github('decisionpatterns/hash')
+    devtools::install_github('decisionpatterns/r-hash')
 
 
 ## Examples 
